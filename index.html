@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Воронка продаж и выручка 2026–2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#E7ECF0; --panel:#F7F9FB; --ink:#0F1F2E; --mute:#586878; --rule:#C6D0D9; --soft:#DCE3E9;
+  --base:#7F90A3; --scen:#0A7A62; --scen-bg:#D9EEE8; --neg:#B0353F;
+  --l-fact:#2B3E52; --l-svc:#4E93A3; --l-pipe:#9DB4CC; --l-flow:#D0A82A; --l-other:#C3CAD1;
+  --c-ko:#1F5F8B; --c-ab:#6C7A89; --c-ag:#8A5FB0; --c-ev:#B0713A; --c-st:#3F8F6B; --c-un:#9098A0; --c-ot:#D4C58A;
+  --f:'Golos Text','Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:120px}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 15px/1.5 var(--f);font-variant-numeric:tabular-nums}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--scen);outline-offset:2px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+header.top{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:2px solid var(--ink)}
+.top-in{display:flex;flex-wrap:wrap;gap:8px 32px;align-items:flex-end;justify-content:space-between;padding-top:14px}
+h1{font-size:22px;line-height:1.2;font-weight:600;margin:0;letter-spacing:-.01em}
+.sub{margin:2px 0 0;color:var(--mute);font-size:13px}
+.ledger{display:grid;grid-template-columns:auto auto auto auto;gap:0 20px;font-size:13px;text-align:right;align-items:baseline}
+.ledger .h{color:var(--mute);font-size:12px}
+.ledger .r{font-weight:600;text-align:left}
+.ledger .d.pos{color:var(--scen);font-weight:600}.ledger .d.neg{color:var(--neg);font-weight:600}
+nav.tabs{display:flex;gap:4px;margin-top:10px;overflow-x:auto}
+nav.tabs button{background:none;border:0;border-bottom:3px solid transparent;padding:8px 14px 9px;cursor:pointer;color:var(--mute);font-weight:500;white-space:nowrap}
+nav.tabs button:hover{color:var(--ink)}
+nav.tabs button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--ink);font-weight:600}
+main{padding:28px 0 80px}
+section.tab{display:none}section.tab.on{display:block}
+h2{font-size:20px;font-weight:600;line-height:1.3;margin:0 0 6px;letter-spacing:-.01em;max-width:60ch}
+h3{font-size:16px;font-weight:600;margin:32px 0 8px}
+p.note{color:var(--mute);font-size:13px;margin:4px 0 12px;max-width:78ch}
+.bar-ctl{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;margin:14px 0 16px}
+.seg{display:inline-flex;border:1px solid var(--ink);border-radius:3px;overflow:hidden}
+.seg button{background:transparent;border:0;padding:6px 14px;cursor:pointer;border-right:1px solid var(--ink)}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed=true]{background:var(--ink);color:var(--paper)}
+label.f{display:inline-flex;gap:8px;align-items:center;font-size:13px;color:var(--mute)}
+select,input[type=number],input[type=text]{background:#fff;border:1px solid var(--rule);border-radius:3px;padding:5px 8px;min-height:32px}
+input[type=number]{width:84px;text-align:right}
+.btn{background:transparent;border:1px solid var(--ink);border-radius:3px;padding:5px 12px;cursor:pointer;min-height:32px}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn.sm{padding:2px 9px;min-height:26px;font-size:13px}
+.btn.go{border-color:var(--scen);color:var(--scen)}.btn.go:hover{background:var(--scen);color:#fff}
+
+/* воронка */
+.funnel{background:var(--panel);border:1px solid var(--rule);border-radius:4px;padding:6px 20px 14px}
+.fhead,.frow{display:grid;grid-template-columns:200px 170px minmax(160px,1fr) 150px;gap:0 20px;align-items:center}
+.fhead{font-size:12px;color:var(--mute);padding:10px 0 8px;border-bottom:1px solid var(--ink)}
+.fhead span:last-child,.fnum{text-align:right}
+.frow{padding:12px 0;border-bottom:1px solid var(--soft)}
+.frow:last-child{border-bottom:0}
+.fname{font-weight:500;line-height:1.25}
+.fname small{display:block;font-weight:400;color:var(--mute);font-size:12px}
+.fconv .cur{font-size:12px;color:var(--mute);display:flex;justify-content:space-between;margin-bottom:3px}
+.fconv .in{display:flex;align-items:center;gap:6px}
+.fconv input[type=number]{width:78px;border-color:var(--scen);background:#fff}
+.fconv input[type=range]{width:100%;accent-color:var(--scen);margin:0}
+.fbars{display:flex;flex-direction:column;gap:4px}
+.bb,.sb{height:12px;border-radius:1px;transition:width .18s}
+.bb{background:var(--base)}.sb{background:var(--scen)}
+.fnum{font-size:14px;line-height:1.3}
+.fnum b{font-weight:600}
+.fnum .up{color:var(--scen);font-weight:600}.fnum .dn{color:var(--neg);font-weight:600}
+.fnum small{display:block;color:var(--mute);font-size:12px}
+.lg{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--mute);margin-right:14px}
+.lg i{width:14px;height:8px;display:inline-block;border-radius:1px}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:0 48px;align-items:start}
+table.t{width:100%;border-collapse:collapse;font-size:14px}
+table.t th{font-weight:500;color:var(--mute);font-size:12px;text-align:right;padding:6px 8px;border-bottom:1px solid var(--ink)}
+table.t th:first-child{text-align:left;padding-left:0}
+table.t td{padding:7px 8px;border-bottom:1px solid var(--soft);text-align:right;vertical-align:middle}
+table.t td:first-child{text-align:left;padding-left:0}
+table.t tr.tot td{font-weight:600;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+table.t tr.sub td{color:var(--mute)}
+table.t tr.grp td{font-weight:600;padding-top:14px;border-bottom:1px solid var(--rule);text-align:left}
+td.pos{color:var(--scen);font-weight:600}td.neg{color:var(--neg);font-weight:600}
+.scroll{overflow-x:auto}
+.lever{display:grid;grid-template-columns:minmax(150px,1.2fr) minmax(90px,1fr) 88px 78px;gap:0 12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--soft);font-size:14px}
+.lever .lb small{display:block;color:var(--mute);font-size:12px}
+.lever .bar{height:14px;background:var(--scen);border-radius:1px;min-width:1px}
+.lever .v{text-align:right}
+.lever .v small{display:block;color:var(--mute);font-size:12px}
+.chart{background:var(--panel);border:1px solid var(--rule);border-radius:4px;padding:10px 8px 6px}
+.chart svg{display:block;width:100%;height:auto}
+.legend{display:flex;flex-wrap:wrap;gap:4px 16px;padding:4px 10px 8px;font-size:12px;color:var(--mute)}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:1px;margin-right:6px;vertical-align:-1px}
+.grid-a{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:0 44px}
+.arow{display:grid;grid-template-columns:1fr 92px;gap:12px;align-items:center;padding:7px 0;border-bottom:1px solid var(--soft);font-size:14px}
+.arow small{display:block;color:var(--mute);font-size:12px;line-height:1.35}
+.arow input,.arow select{width:92px}
+.callout{border-left:3px solid var(--scen);background:var(--scen-bg);padding:10px 14px;font-size:14px;max-width:80ch;margin:14px 0}
+.chip{display:inline-block;padding:0 8px;border-radius:2px;font-size:12px;line-height:20px;color:#fff}
+@media (max-width:900px){
+  header.top{position:static}
+  .two{grid-template-columns:1fr}
+  .fhead{display:none}
+  .frow{grid-template-columns:1fr 1fr;gap:8px 16px}
+  .fbars{grid-column:1/-1;order:3}.fnum{text-align:left}
+  .ledger{font-size:12px}
+}
+@media (prefers-reduced-motion:reduce){.bb,.sb{transition:none}}
+
+.chip{white-space:nowrap}
+th.l,td.l{text-align:left!important}
+td select{min-width:230px;max-width:100%}
+td select[data-cli]{min-width:110px}
+.lever{grid-template-columns:minmax(150px,1.2fr) minmax(80px,1fr) 92px 104px}
+.lever .btn{white-space:nowrap}
+
+.ledwrap{text-align:right}.rng{font-size:12px;color:var(--mute);margin-top:3px}
+
+/* сравнение источников */
+.cmprow{display:grid;grid-template-columns:100px 1fr 150px;gap:10px;align-items:center;padding:7px 0}
+.cmplb{font-weight:600;font-size:13px}
+.cmpbar{position:relative;height:16px;background:var(--soft);border-radius:2px;overflow:hidden}
+.cmpfill{height:100%;border-radius:2px}
+.cmpbar2{display:flex;flex-direction:column;gap:3px;justify-content:center}
+.cmpbar2 .bb,.cmpbar2 .sb{height:9px;border-radius:2px}
+.cmpval{font-size:13px;text-align:right;white-space:nowrap}
+
+/* загруженность / календарь */
+.calgrid{display:grid;grid-template-columns:56px repeat(12,1fr);gap:4px;margin-top:6px}
+.calyear{grid-column:1;writing-mode:vertical-rl;text-orientation:mixed;font-weight:600;font-size:13px;display:flex;align-items:center;justify-content:center;color:var(--ink)}
+.calcell{border-radius:3px;padding:8px 4px;text-align:center;min-height:54px;display:flex;flex-direction:column;justify-content:center;border:1px solid transparent}
+.calcell.fact{border-color:var(--ink)}
+.calcell.gap{border:1.5px dashed var(--neg)}
+.calm{font-size:11px;color:var(--ink);opacity:.75}
+.caln{font-size:15px;font-weight:600;color:var(--ink)}
+
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="top-in">
+    <div><h1>Воронка продаж и выручка 2026–2027</h1><p class="sub">Размещение облигаций и сопровождение эмитентов. Суммы в млн ₽. Факт — до 31 августа 2026.</p></div>
+    <div class="ledwrap"><div class="ledger" id="ledger" aria-live="polite"></div><div class="rng" id="rng"></div></div>
+  </div>
+  <nav class="tabs" id="tabs" role="tablist"></nav>
+</div></header>
+
+<main class="wrap">
+
+<section class="tab" id="tab-funnel">
+  <h2 id="fhead"></h2>
+  <div class="bar-ctl">
+    <div class="seg" id="chseg" role="group" aria-label="Источник лидов"></div>
+    <span class="note" id="chdesc" style="margin:0"></span>
+    <label class="f">Период <select id="hz"><option value="ytd">8,5 мес. текущей базы</option><option value="12">12 месяцев</option></select></label>
+    <label class="f" id="moneyl">Агентское <select id="money"><option value="gross">полностью</option><option value="net">за вычетом расходов</option></select></label>
+    <button class="btn go" id="bestBtn">Взять лучший результат по каждому этапу</button>
+    <button class="btn" id="resetBtn">Сбросить сценарий</button>
+  </div>
+  <div class="funnel">
+    <div class="fhead"><span>Этап</span><span>Конверсия из предыдущего этапа</span><span><span class="lg"><i style="background:var(--base)"></i>Сейчас</span><span class="lg"><i style="background:var(--scen)"></i>Сценарий</span> длина полосы — логарифм количества</span><span>Клиентов на этапе</span></div>
+    <div id="frows"></div>
+  </div>
+  <p class="note" id="fnote" style="margin-top:10px"></p>
+
+  <div class="two" style="margin-top:28px">
+    <div>
+      <h3 style="margin-top:0">Итог на выходе воронки</h3>
+      <div id="fres"></div>
+    </div>
+    <div>
+      <h3 style="margin-top:0">Какой этап улучшать</h3>
+      <div class="bar-ctl" style="margin:6px 0 4px">
+        <label class="f">Улучшение <select id="tmode"><option value="pp">в процентных пунктах</option><option value="rel">в процентах от текущего</option><option value="best">до лучшего результата по этапу</option></select></label>
+        <label class="f" id="txl"><input type="number" id="tx" step="0.5" min="0.5" value="2"></label>
+      </div>
+      <p class="note" id="lhead"></p>
+      <div id="levers"></div>
+    </div>
+  </div>
+</section>
+
+<section class="tab" id="tab-forecast">
+  <h2 id="fcHead"></h2>
+  <div class="bar-ctl">
+    <label class="f">На графике <select id="fcSet"><option value="scen">Сценарий</option><option value="base">База</option></select></label>
+    <label class="f">Разбивка <select id="fcGroup"><option value="layers">по источнику выручки</option><option value="ch">по каналу привлечения</option></select></label>
+    <label class="f">Улучшенные конверсии действуют с <select id="effFrom"></select></label>
+  </div>
+  <div class="chart"><div id="fcChart"></div><div class="legend" id="fcLegend"></div></div>
+  <p class="note" style="margin-top:10px">База — текущие конверсии. Сценарий — значения, введённые на вкладке «Воронка», начиная с выбранного месяца. Выпуски из pipeline взвешены вероятностью: этап сделки × конверсии остальных этапов воронки.</p>
+  <h3>Насколько надёжна цифра: диапазон выручки</h3>
+  <p class="note" id="fcRangeNote"></p>
+  <div class="chart"><div id="fcRange"></div></div>
+  <div class="scroll" id="fcRangeTab" style="margin-top:10px"></div>
+  <h3>Выручка по годам</h3>
+  <div class="scroll" id="fcTab"></div>
+  <h3>Новые выпуски по каналам, шт.</h3>
+  <div class="scroll" id="fcCnt"></div>
+  <h3>Помесячно</h3>
+  <div class="scroll" id="fcMonths"></div>
+</section>
+
+<section class="tab" id="tab-clients">
+  <h2>Каждый клиент привязан к каналу привлечения</h2>
+  <p class="note">Смените канал клиента — прогноз пересчитается: выпуски и сопровождение клиента пойдут по конверсиям того канала, куда вы его перенесли.</p>
+  <div class="scroll" id="chSum"></div>
+  <h3>Выпуски в работе (pipeline)</h3>
+  <p class="note">Этап сделки определяет вероятность размещения. Улучшение конверсий последующих этапов повышает её в сценарии.</p>
+  <div class="scroll" id="pipeTab"></div>
+  <h3>Клиенты</h3>
+  <div class="scroll" id="cliTab"></div>
+</section>
+
+<section class="tab" id="tab-calendar">
+  <h2>Загруженность по месяцам</h2>
+  <p class="note">Факт (янв–авг 2026) — реально бывшие размещения по месяцам. С сентября 2026 — ожидание модели: сумма вероятностей pipeline и потока новых клиентов, распределённая когортами. Модель размазывает поток новых клиентов ровно, месяц к месяцу — <b>это упрощение</b>. В жизни размещения кластеризуются, бывают провалы, когда на рынке нет «окна возможностей» и инвесторы не активны — так уже было в апреле и мае 2026 (см. отметки ниже). Прогнозные месяцы 2027 года стоит читать как «в сумме за квартал/год», а не как точный план на конкретный месяц.</p>
+  <h3 style="margin-top:18px">Итого</h3>
+  <div class="scroll" id="calKpi"></div>
+  <div class="bar-ctl" style="margin-top:14px">
+    <label class="f">Показатель <select id="calMetric"><option value="cnt">Число выпусков</option><option value="vol">Объём, млн ₽</option><option value="rev">Выручка, млн ₽</option></select></label>
+  </div>
+  <div class="chart"><div id="calChart"></div></div>
+  <div id="calLegend"></div>
+  <h3>По кварталам</h3>
+  <div class="scroll" id="calQuarters"></div>
+  <h3>Календарь 2026–2027</h3>
+  <p class="note">Серые ячейки с рамкой — факт, уже случившийся. Цветные — прогноз (база). Красная обводка — месяц без единого размещения.</p>
+  <div id="calGrid"></div>
+  <div id="calGaps"></div>
+  <h3>Рейтинг клиента и вероятность размещения</h3>
+  <div id="calRating"></div>
+</section>
+
+<section class="tab" id="tab-compare">
+  <h2>Какой источник эффективнее</h2>
+  <p class="note">Все пять источников в одной таблице. Абсолютные суммы источников с 0–3 продажами в выборке (Агенты, Мероприятия, Сайт) — не факт, а прикидка на очень малых числах: смотрите столбец «Продаж в наблюдении» и не сравнивайте их с КО и АВ как равные по надёжности.</p>
+  <div class="scroll" id="cmpTab"></div>
+
+  <h3>Затраты по источникам</h3>
+  <p class="note">ФОТ клиентского отдела и известные издержки (вознаграждение агентам, бюджет мероприятий), поделённые по источникам.</p>
+  <div class="scroll" id="cmpCost"></div>
+
+  <h3>Экономика одного клиента за жизненный цикл</h3>
+  <p class="note">Агентское + юр. подготовка + 36 месяцев сопровождения на один выпуск. Не зависит от размера потока — это качество сделки, а не масштаб источника.</p>
+  <div class="chart"><div id="cmpValueChart"></div></div>
+
+  <h3>Вклад в прогноз 2027 года</h3>
+  <p class="note">Сколько реальных денег источник добавит в 2027 году при текущем потоке, с учётом лага и распределения сопровождения по месяцам — то, что фактически попадёт в кассу, а не сумма жизненного цикла целиком.</p>
+  <div class="chart"><div id="cmpFlowChart"></div></div>
+
+  <h3>Куда вкладывать усилия</h3>
+  <div id="cmpReco"></div>
+</section>
+
+<section class="tab" id="tab-assume">
+  <h2>Допущения модели</h2>
+  <p class="note">Суммы в тыс. ₽, если не указано иное. Значения из файла клиента проставлены по умолчанию; всё, что оценено вместо данных, можно поменять здесь.</p>
+  <div class="callout">Как считается прогноз. Январь–август 2026 — фактические данные файла. С сентября: выпуски из pipeline с вероятностью, сопровождение действующих клиентов, прочие услуги и новые клиенты из воронок каналов (звонок или договор месяца s даёт выпуск в месяце s + лаг). Механика сверена с файлом: если принять все сделки состоявшимися, модель воспроизводит итог 2026 года — 133,7 млн ₽.</div>
+  <div id="assumeBody"></div>
+  <p style="margin-top:24px"><button class="btn" id="resetAll">Вернуть исходные значения</button></p>
+</section>
+
+</main>
+<script>
+const DATA={"clients":[{"reg_name":"ЗАЩИТА ОНЛАЙН ООО ПКО","name":"Защита Онлайн","ch":"АВ","region":"Новосибирск","status":"размещен","stage":"placed","rating":"B","ratingNum":4,"agency":"НРА"},{"reg_name":"Круиз ООО","name":"Круиз","ch":"АВ","region":"СПб","status":"размещен","stage":"placed"},{"reg_name":"ЛОМБАРД 888 ООО","name":"Ломбард 888","ch":"АВ","region":"Москва","status":"размещен","stage":"placed"},{"reg_name":"НАФТАТРАНС ПЛЮС ООО ТК","name":"Нафтатранс","ch":"АВ","region":"Новосибирск","status":"размещен","stage":"placed","rating":"B+","ratingNum":5,"agency":"НРА"},{"reg_name":"НЕО-ПАК ООО","name":"Нео-Пак","ch":"АВ","region":"Новосибирск","status":"размещен","stage":"placed","rating":"B+","ratingNum":5,"agency":"Э"},{"reg_name":"НЗРМ ООО","name":"НЗРМ","ch":"АВ","region":"Новосибирск","status":"размещен","stage":"placed","rating":"BB","ratingNum":7,"agency":"Э"},{"reg_name":"НЭППИ КЛАБ АО","name":"Нэппи Клаб","ch":"АВ","region":"Москва","status":"размещен","stage":"placed","rating":"B-","ratingNum":3,"agency":"Э"},{"reg_name":"ПЕРВЫЙ ЮВЕЛИРНЫЙ ЛОМБАРД ООО","name":"ПЮЛ","ch":"АВ","region":"Москва","status":"размещен","stage":"placed"},{"reg_name":"СДЭК-ГЛОБАЛ ООО","name":"СДЭК-Глобал","ch":"АВ","region":"Новосибирск","status":"размещен","stage":"placed"},{"reg_name":"СЕЛЛ-Сервис ООО","name":"Селл-Сервис","ch":"АВ","region":"Новосибирск","status":"размещен","stage":"placed","rating":"BB","ratingNum":7,"agency":"Э"},{"reg_name":"Сибстекло ООО","name":"Сибстекло","ch":"АВ","region":"Новосибирск","status":"размещен","stage":"placed","rating":"BB-","ratingNum":6,"agency":"А"},{"reg_name":"СМАК ООО ПК","name":"СМАК","ch":"АВ","region":"Новосибирск","status":"размещен","stage":"placed","rating":"B+","ratingNum":5,"agency":"Э"},{"reg_name":"ТРАНС-МИССИЯ ООО","name":"Транс-Миссия","ch":"АВ","region":"СПб","status":"размещен","stage":"placed","rating":"B+","ratingNum":5,"agency":"Э"},{"reg_name":"Ультра ООО","name":"Ультра","ch":"АВ","region":"Челябинск","status":"размещен","stage":"placed","rating":"B","ratingNum":4,"agency":"НРА"},{"reg_name":"Феррони ООО","name":"Феррони","ch":"АВ","region":"Краснодар","status":"размещен","stage":"placed","rating":"B+","ratingNum":5,"agency":"А"},{"reg_name":"ХРОМОС ИНЖИНИРИНГ ООО","name":"Хромос","ch":"АВ","region":"Нижний новгород","status":"размещен","stage":"placed","rating":"BB","ratingNum":7,"agency":"Э"},{"reg_name":"ЧИСТАЯ ПЛАНЕТА ООО","name":"Чистая планета","ch":"АВ","region":"Новосибирск","status":"размещен","stage":"placed","rating":"B+","ratingNum":5,"agency":"Э"},{"reg_name":"ФЕРРУМ ООО","name":"Феррум","ch":"Агент","region":"СПб","status":"размещен","stage":"placed","rating":"BB-","ratingNum":6,"agency":"А"},{"reg_name":"Ю ДИ ПИ АВТО ООО","name":"ЮДП Авто","ch":"АВ","region":"Новосибирск","status":"размещен","stage":"placed","rating":"BB+","ratingNum":8,"agency":"Э"},{"reg_name":"Филберт","name":"Филберт","ch":"КО","region":"СПб","status":"размещен полностью","stage":"placed","rating":"BBB-","ratingNum":9,"agency":"Э"},{"reg_name":"Металтрейд","name":"Металтрейд","ch":"КО","region":"Липецк","status":"размещен частично","stage":"placed_part","rating":"B","ratingNum":4,"agency":"Э"},{"reg_name":"Капдорстрой","name":"Капдорстрой","ch":"КО","region":"Нижний новгород","status":"размещен частично","stage":"placed_part","rating":"BB-","ratingNum":6,"agency":"Э"},{"reg_name":"СПБ Лифтовый завод","name":"СПб Лифтовый завод","ch":"Агент","region":"СПб","status":"дог. На подписани","stage":"on_signing","rating":"B","ratingNum":4,"agency":null},{"reg_name":"Людиновокабель","name":"Людиновокабель","ch":"АВ","region":"Москва","status":"дог. На подписани","stage":"on_signing","rating":"B+","ratingNum":5,"agency":null},{"reg_name":"Виртекс","name":"Виртекс","ch":"КО","region":"Новосибирск","status":"дог. Подписан в процессе подготовки","stage":"signed","rating":"BB","ratingNum":7,"agency":null},{"reg_name":"Агима","name":"Агима","ch":"АВ","region":"Москва","status":"получили реш биржи, остановились","stage":"stopped","rating":"BB","ratingNum":7,"agency":null},{"reg_name":"ГК кокос","name":"ГК Кокос","ch":"АВ","region":"Москва","status":"получили реш биржи, остановились","stage":"stopped","rating":"BB-","ratingNum":6,"agency":"Э"},{"reg_name":"Ламбумиз","name":"Ламбумиз","ch":"АВ","region":"Новосибирск","status":"размещен","stage":"placed"},{"reg_name":"Инкаб","name":"Инкаб","ch":"АВ","region":"Пермь","status":"размещен","stage":"placed","rating":"BBB","ratingNum":10,"agency":"НКР"},{"reg_name":"НТЦ ЕВРОВЕНТ","name":"НТЦ Евровент","ch":"АВ","region":"Новосибирск","status":"размещен","stage":"placed","rating":"BB+","ratingNum":8,"agency":"Э"},{"reg_name":"Кузина ООО","name":"Кузина","ch":"АВ","region":"Новосибирск","status":"размещен","stage":"placed","rating":"B+","ratingNum":5,"agency":"А"},{"reg_name":"Фабрика Фаворит","name":"Фабрика Фаворит","ch":"АВ","region":"Новосибирск","status":"размещен","stage":"placed"},{"reg_name":"ДжетЛенд","name":"ДжетЛенд","ch":"АВ","region":"Новосибирск","status":"размещен","stage":"placed","rating":"BB+","ratingNum":8,"agency":"Э"},{"reg_name":"Автоотдел","name":"Автоотдел","ch":"АВ","region":"Новосибирск","status":"размещен","stage":"placed","rating":"BB+","ratingNum":8,"agency":"Э"},{"reg_name":"Аквилон","name":"Аквилон","ch":"КО","region":"СПб","status":"дог. На подписани","stage":"on_signing","rating":"B","ratingNum":4,"agency":null}],"issues":[{"name":"Нафтатранс БО-06","issuer":"Нафтатранс","vol":250.0,"planIdx":-12,"note":null,"legal26":[0,0,0,0,0,0,0,0,0,0,0,0],"agent26":[0,0,0,0,0,0,0,0,0,0,0,0],"legal25":0,"agent25":4751.79,"stage":"s7"},{"name":"Сибстекло БО-01","issuer":"Сибстекло","vol":350.0,"planIdx":-11,"note":null,"legal26":[0,0,0,0,0,0,0,0,0,0,0,0],"agent26":[0,0,0,0,0,0,0,0,0,0,0,0],"legal25":0,"agent25":10704.3,"stage":"s7"},{"name":"Хромос БО-03","issuer":"Хромос","vol":250.0,"planIdx":-11,"note":null,"legal26":[0,0,0,0,0,0,0,0,0,0,0,0],"agent26":[0,0,0,0,0,0,0,0,0,0,0,0],"legal25":300,"agent25":6903.319617509672,"stage":"s7"},{"name":"Нафтатранс БО-07","issuer":"Нафтатранс","vol":250.0,"planIdx":-10,"note":null,"legal26":[0,0,0,0,0,0,0,0,0,0,0,0],"agent26":[0,0,0,0,0,0,0,0,0,0,0,0],"legal25":100,"agent25":8067.25,"stage":"s7"},{"name":"Нео-Пак","issuer":"Нео-Пак","vol":130.0,"planIdx":-7,"note":null,"legal26":[0,0,0,0,0,0,0,0,0,0,0,0],"agent26":[0,0,0,0,0,0,0,0,0,0,0,0],"legal25":1200,"agent25":375,"stage":"s7"},{"name":"Ависта","issuer":"Ависта","vol":0.0,"planIdx":null,"note":null,"legal26":[0,0,0,0,0,0,0,0,0,0,0,0],"agent26":[0,0,0,0,0,0,0,0,0,0,0,0],"legal25":706.6,"agent25":0,"stage":"s7"},{"name":"НЗРМ","issuer":"НЗРМ","vol":0.0,"planIdx":null,"note":null,"legal26":[0,0,0,0,0,0,0,0,0,0,0,0],"agent26":[0,0,0,0,0,0,0,0,0,0,0,0],"legal25":400,"agent25":0,"stage":"s7"},{"name":"ДВ Капитал","issuer":"ДВ Капитал","vol":0.0,"planIdx":null,"note":null,"legal26":[0,0,0,0,0,0,0,0,0,0,0,0],"agent26":[0,0,0,0,0,0,0,0,0,0,0,0],"legal25":500,"agent25":0,"stage":"s7"},{"name":"Сибстекло БО-02","issuer":"Сибстекло","vol":300.0,"planIdx":-5,"note":null,"legal26":[0,0,0,0,0,0,0,0,0,0,0,0],"agent26":[0,0,0,0,0,0,0,0,0,0,0,0],"legal25":600,"agent25":6277,"stage":"s7"},{"name":"Феррум БО2","issuer":"Феррум","vol":250.0,"planIdx":-4,"note":null,"legal26":[0,0,0,0,0,0,0,0,0,0,0,0],"agent26":[0,0,0,0,0,0,0,0,0,0,0,0],"legal25":1000,"agent25":3563.9372,"stage":"s7"},{"name":"Сибстекло БО-03","issuer":"Сибстекло","vol":200.0,"planIdx":-3,"note":null,"legal26":[0,0,0,0,0,0,0,0,0,0,0,0],"agent26":[0,0,0,0,0,0,0,0,0,0,0,0],"legal25":300,"agent25":3621.4820000000004,"stage":"s7"},{"name":"ПКО Защита БО-01","issuer":"Защита Онлайн","vol":200.0,"planIdx":-1,"note":null,"legal26":[0,0,0,0,0,0,0,0,0,0,0,0],"agent26":[0,0,0,0,0,0,0,0,0,0,0,0],"legal25":1100,"agent25":2848,"stage":"s7"},{"name":"Ломбард888 БО-01","issuer":"Ломбард 888","vol":200.0,"planIdx":0,"note":null,"legal26":[0,0,0,0,0,0,0,0,0,0,0,0],"agent26":[5120,0,0,0,0,0,0,0,0,0,0,0],"legal25":1400,"agent25":0,"stage":"s7"},{"name":"ПЮЛ БО-01","issuer":"ПЮЛ","vol":75.0,"planIdx":1,"note":null,"legal26":[300,0,0,0,0,0,0,0,0,0,0,0],"agent26":[0,1440,0,0,0,0,0,0,0,0,0,0],"legal25":300,"agent25":0,"stage":"s7"},{"name":"ПЮЛ БО-02","issuer":"ПЮЛ","vol":75.0,"planIdx":2,"note":null,"legal26":[0,0,0,0,0,0,0,0,0,0,0,0],"agent26":[0,0,1264.72,0,0,0,0,0,0,0,0,0],"legal25":0,"agent25":0,"stage":"s7"},{"name":"Агима БО-01","issuer":"Агима","vol":50.0,"planIdx":10,"note":null,"legal26":[500,0,0,0,0,0,500,0,0,0,0,0],"agent26":[0,0,0,0,0,0,0,0,0,0,720,0],"legal25":0,"agent25":0,"pipe":{"cat":"c40","vol":50,"dog":"На регистрации","note":null,"plan":null,"src":"Агима БО-01"},"stage":"s6"},{"name":"Защита БО-02","issuer":"Защита Онлайн","vol":200.0,"planIdx":1,"note":null,"legal26":[100,0,0,0,0,0,0,0,0,0,0,0],"agent26":[0,3625.0,0,0,0,0,0,0,0,0,0,0],"legal25":0,"agent25":0,"stage":"s7"},{"name":"Хромос БО-04","issuer":"Хромос","vol":260.0,"planIdx":0,"note":null,"legal26":[0,0,0,0,0,0,0,0,0,0,0,0],"agent26":[4992,0,0,0,0,0,0,0,0,0,0,0],"legal25":200,"agent25":0,"stage":"s7"},{"name":"Хромос БО-05","issuer":"Хромос","vol":210.0,"planIdx":7,"note":"Приостановлен","legal26":[0,0,0,0,0,0,200,0,0,0,0,0],"agent26":[0,0,0,0,0,0,0,0,0,0,0,0],"legal25":0,"agent25":0,"pipe":{"cat":"q","vol":210,"dog":"Подписан","note":"Получили лимит от сбера на 800 млн","plan":7,"src":"Хромос"},"stage":"s5"},{"name":"Ломбард888 БО-02","issuer":"Ломбард 888","vol":200.0,"planIdx":6,"note":null,"legal26":[0,0,0,0,300,0,0,0,0,0,0,0],"agent26":[0,0,0,0,0,0,962.3,490.72,1580,1557.44,0,0],"legal25":0,"agent25":0,"pipe":{"cat":"c80","vol":200,"dog":"Подписан","note":"в размещении (200 млн)","plan":6,"src":"Ломбард888"},"stage":"s7"},{"name":"Филберт БО-01","issuer":"Филберт","vol":500.0,"planIdx":7,"note":null,"legal26":[0,0,500,0,0,500,0,0,0,0,0,0],"agent26":[0,0,0,0,0,0,0,2373.797,0,-544.5,0,0],"legal25":0,"agent25":0,"stage":"s7"},{"name":"Филберт БО-02","issuer":"Филберт","vol":500.0,"planIdx":11,"note":"Проект","legal26":[0,0,0,0,0,0,0,0,400,0,0,0],"agent26":[0,0,0,0,0,0,0,0,0,0,0,6200],"legal25":0,"agent25":0,"pipe":{"cat":"c80","vol":500,"dog":"Подписан","note":"Предварительный план","plan":11,"src":"Филберт БО2"},"stage":"s5"},{"name":"Сибстекло БО-04","issuer":"Сибстекло","vol":250.0,"planIdx":5,"note":null,"legal26":[0,0,0,0,200,200,0,0,0,0,0,0],"agent26":[0,0,0,0,0,1663,152.56,1477.23,1672,2755.04,0,0],"legal25":0,"agent25":0,"pipe":{"cat":"c80","vol":250,"dog":"Подписан","note":"в размещении (250 млн)","plan":5,"src":"Сибстекло бо4"},"stage":"s7"},{"name":"Сибстекло БО-05","issuer":"Сибстекло","vol":250,"planIdx":9,"note":"Вероятность отмены","legal26":[0,0,0,0,0,0,0,0,0,200,0,0],"agent26":[0,0,0,0,0,0,0,0,0,0,1850,1850],"legal25":0,"agent25":0,"pipe":{"cat":"c80","vol":250,"dog":"Подписан","note":"По итогам размещения БО-04","plan":9,"src":"Сибстекло бо5"},"stage":"s5"},{"name":"Капдорстрой БО-01","issuer":"Капдорстрой","vol":250.0,"planIdx":8,"note":null,"legal26":[0,0,0,0,0,0,700,500,0,0,0,0],"agent26":[0,0,0,0,0,0,0,0,5730,-499,0,0],"legal25":0,"agent25":0,"pipe":{"cat":"c80","vol":250,"dog":"Подписан","note":"ждем торгов","plan":8,"src":"Капдорстрой"},"stage":"s6"},{"name":"Металтрейд БО-01","issuer":"Металтрейд","vol":250.0,"planIdx":9,"note":"Вероятность недоразмещения","legal26":[0,0,0,0,500,500,0,0,0,0,0,0],"agent26":[0,0,0,0,0,0,267.66,629.93,860,1310,-284.553,0],"legal25":0,"agent25":0,"pipe":{"cat":"c80","vol":250,"dog":"Подписан","note":"в размещении (250 млн)","plan":9,"src":"Металтрейд БО1"},"stage":"s7"},{"name":"СПБ Лифтовый завод БО-01","issuer":"СПб Лифтовый завод","vol":200.0,"planIdx":9,"note":"Проект","legal26":[0,0,0,0,0,0,0,0,0,0,0,0],"agent26":[0,0,0,0,0,0,0,0,0,0,0,0],"legal25":0,"agent25":0,"stage":"s7"},{"name":"ПЮЛ БО-03","issuer":"ПЮЛ","vol":100.0,"planIdx":10,"note":null,"legal26":[0,0,0,0,0,0,0,0,300,0,0,0],"agent26":[0,0,0,0,0,0,0,0,0,0,1920,0],"legal25":0,"agent25":0,"pipe":{"cat":"c80","vol":100,"dog":"Подписан","note":"Направляем на биржу","plan":10,"src":"ПЮЛ3"},"stage":"s5"},{"name":"Людиновокабель БО-01","issuer":"Людиновокабель","vol":300.0,"planIdx":10,"note":"Вероятность отмены / переноса","legal26":[0,0,0,0,0,0,0,0,0,500,500,0],"agent26":[0,0,0,0,0,0,0,0,0,0,6100,-588],"legal25":0,"agent25":0,"pipe":{"cat":"c40","vol":300,"dog":"Направили договоры","note":"Есть вероятность переноса / отмены","plan":10,"src":"Людиновокабель БО1"},"stage":"s4"},{"name":"Людиновокабель БО-02","issuer":"Людиновокабель","vol":0.0,"planIdx":11,"note":"Вероятность отмены / переноса","legal26":[0,0,0,0,0,0,0,0,0,0,0,0],"agent26":[0,0,0,0,0,0,0,0,0,0,0,0],"legal25":0,"agent25":0,"stage":"s7"},{"name":"Виртекс БО-01","issuer":"Виртекс","vol":100.0,"planIdx":9,"note":null,"legal26":[0,0,0,0,0,0,0,0,500,0,0,0],"agent26":[0,0,0,0,0,0,0,0,0,2100,-245,0],"legal25":0,"agent25":0,"pipe":{"cat":"c80","vol":100,"dog":"Подписан","note":"На рассмотрении биржей","plan":9,"src":"Виртекс"},"stage":"s5"},{"name":"Сибстекло БО-06","issuer":"Сибстекло","vol":350,"planIdx":11,"note":"Проект","legal26":[0,0,0,0,0,0,0,0,0,0,200,0],"agent26":[0,0,0,0,0,0,0,0,0,0,0,0],"legal25":0,"agent25":0,"pipe":{"cat":"c80","vol":350,"dog":"-","note":"Включили на упреждение т.к. гашение в янв. 27","plan":11,"src":"Сибстекло бо6"},"stage":"s4"},{"name":"Аквилон БО-01","issuer":"Аквилон","vol":300,"planIdx":10,"note":"Проект","legal26":[0,0,0,0,0,0,0,0,0,500,500,0],"agent26":[0,0,3217.5,0,0,0,0,0,0,0,3270,-330],"legal25":0,"agent25":0,"pipe":{"cat":"c80","vol":300,"dog":"На подписании","note":"КФК","plan":null,"src":"Аквилон"},"stage":"s4"},{"name":"Право Онлайн БО-01","issuer":"Право Онлайн","vol":250.0,"planIdx":11,"note":"Проект","legal26":[0,0,0,0,0,0,0,0,600,0,700,0],"agent26":[0,0,0,0,0,0,0,0,0,0,0,5200],"legal25":0,"agent25":0,"pipe":{"cat":"c80","vol":250,"dog":"Подписан","note":"Есть вероятность переноса на январь","plan":11,"src":"Право Онлайн БО1"},"stage":"s5"},{"name":"Защита Онлайн БО-03","issuer":"Защита Онлайн","vol":240.0,"planIdx":8,"note":null,"legal26":[0,0,0,0,0,0,400,300,0,0,0,0],"agent26":[0,0,0,0,0,0,0,0,2150,0,0,0],"legal25":0,"agent25":0,"pipe":{"cat":"c80","vol":240,"dog":"Подписан","note":"торги 04 сентября","plan":8,"src":"Защита Онлайн БО-03"},"stage":"s6"},{"name":"Защита Онлайн БО-04","issuer":"Защита Онлайн","vol":100,"planIdx":9,"note":"Вероятность отмены / переноса","legal26":[0,0,0,0,0,0,0,0,0,100,0,0],"agent26":[0,0,0,0,0,0,0,0,0,2640,0,0],"legal25":0,"agent25":0,"pipe":{"cat":"c80","vol":100,"dog":"Подписан","note":"Вероятность отмены / переноса","plan":9,"src":"Защита Онлайн БО-04"},"stage":"s5"}],"extra":[{"name":"Право Онлайн БО-02","issuer":"Право Онлайн","vol":250,"planIdx":13,"cat":"c80","dog":"Подписан","note":"высокая вероятность переноса на 2027","stage":"s5"},{"name":"Галеон","issuer":"Галеон","vol":300,"planIdx":11,"cat":"c40","dog":"На согласовании","note":"сбор анкеиы и согл. С собств","stage":"s4"}],"services":[{"client":"Защита Онлайн","raw":"ЗАЩИТА ОНЛАЙН ООО ПКО","type":"IR","m":[170,170,170,170,170,170,170,200,200,200,200,200],"end":"2029-01","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Круиз","raw":"Круиз ООО","type":"IR","m":[0,0,0,0,0,0,0,0,0,0,0,0],"end":"2025-06","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Ломбард 888","raw":"ЛОМБАРД 888 ООО","type":"IR","m":[120,130.428,130.428,130.428,130.428,150,150,150,150,150,150,150],"end":"2029-01","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Нафтатранс","raw":"НАФТАТРАНС ПЛЮС ООО ТК","type":"IR","m":[0,0,0,0,0,0,0,0,0,0,0,0],"end":"2026-04","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Нео-Пак","raw":"НЕО-ПАК ООО","type":"IR","m":[90,97.821,97.821,97.821,97.821,97.821,97.821,97.821,97.821,97.821,97.821,97.821],"end":"2031-05","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"НЗРМ","raw":"НЗРМ ООО","type":"IR","m":[40,40,40,40,40,40,40,40,40,40,40,40],"end":"2026-12","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Нэппи Клаб","raw":"НЭППИ КЛАБ АО","type":"IR","m":[0,0,0,0,0,0,0,0,0,0,0,0],"end":"2026-01","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"ПЮЛ","raw":"ПЕРВЫЙ ЮВЕЛИРНЫЙ ЛОМБАРД ООО","type":"IR","m":[0,11.71,81.967,81.967,81.967,81.967,81.967,81.967,81.967,81.967,81.967,81.967],"end":"2026-08","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"СДЭК-Глобал","raw":"СДЭК-ГЛОБАЛ ООО","type":"IR","m":[175,190.208,190.208,190.208,0,0,0,0,0,0,0,0],"end":"2026-04","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Селл-Сервис","raw":"СЕЛЛ-Сервис ООО","type":"IR","m":[105,114.125,114.125,114.125,114.125,114.125,114.125,114.125,114.125,114.125,114.125,114.125],"end":"2027-12","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Сибстекло","raw":"Сибстекло ООО","type":"IR","m":[108.333,170,170,170,170,170,170,170,170,170,170,170],"end":"2028-09","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"СМАК","raw":"СМАК ООО ПК","type":"IR","m":[40,43.476,43.476,43.476,43.476,43.476,43.476,43.476,43.476,43.476,43.476,43.476],"end":"2027-08","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Транс-Миссия","raw":"ТРАНС-МИССИЯ ООО","type":"IR","m":[35,38.042,38.042,38.042,38.042,38.042,38.042,38.042,38.042,38.042,38.042,38.042],"end":"2027-11","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Ультра","raw":"Ультра ООО","type":"IR","m":[70,70,70,70,70,70,70,70,70,70,70,70],"end":"2027-10","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Феррони","raw":"Феррони ООО","type":"IR","m":[70,70,70,70,70,70,0,0,0,0,0,0],"end":null,"endTxt":"дефолт","note":null,"flag":"default","dep":null},{"client":"Хромос","raw":"ХРОМОС ИНЖИНИРИНГ ООО","type":"IR","m":[140,170,170,170,170,170,170,170,170,170,170,170],"end":"2029-07","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Чистая планета","raw":"ЧИСТАЯ ПЛАНЕТА ООО","type":"IR","m":[0,0,0,0,0,0,0,0,0,0,0,0],"end":null,"endTxt":"Дефолт, приостановка","note":null,"flag":"default","dep":null},{"client":"Феррум","raw":"ФЕРРУМ ООО","type":"IR","m":[120,130.428,130.428,130.428,130.428,130.428,130.428,130.428,130.428,130.428,130.428,130.428],"end":"2028-10","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"ЮДП Авто","raw":"Ю ДИ ПИ АВТО ООО","type":"IR","m":[30,30,30,30,30,30,30,20.07,0,0,0,0],"end":"2029-04","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Филберт","raw":"Филберт","type":"IR","m":[0,0,0,0,0,0,150,150,150,150,150,200],"end":null,"endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Металтрейд","raw":"Металтрейд","type":"IR","m":[0,0,0,0,0,0,125.805,150,150,150,150,150],"end":null,"endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Капдорстрой","raw":"Капдорстрой","type":"IR","m":[0,0,0,0,0,0,0,120.967,150,150,150,150],"end":null,"endTxt":null,"note":null,"flag":null,"dep":null},{"client":"СПб Лифтовый завод","raw":"СПБ Лифтовый завод","type":"IR","m":[0,0,0,0,0,0,0,0,0,0,0,0],"end":null,"endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Людиновокабель","raw":"Людиновокабель","type":"IR","m":[0,0,0,0,0,0,0,0,0,0,200,200],"end":null,"endTxt":null,"note":null,"flag":null,"dep":"Людиновокабель БО-01"},{"client":"Виртекс","raw":"Виртекс","type":"IR","m":[0,0,0,0,0,0,0,0,0,120,120,120],"end":null,"endTxt":null,"note":null,"flag":null,"dep":"Виртекс БО-01"},{"client":"Агима","raw":"Агима","type":"IR","m":[0,0,0,0,0,0,0,0,0,0,108,108],"end":null,"endTxt":null,"note":null,"flag":null,"dep":"Агима БО-01"},{"client":"Аргент","raw":"Аргент","type":"ПВО","m":[3.5,3.5,3.5,3.5,3.5,3.5,3.5,0,0,0,0,0],"end":"2026-07","endTxt":null,"note":"оплатили до гашения - в СМАРТЕ больше не планируем!","flag":"prepaid","dep":null},{"client":"ДжетЛенд","raw":"ДЖЕТЛЕНД ООО","type":"ПВО","m":[50,54,54,54,54,54,54,54,54,54,54,54],"end":"2026-12","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Енисейагросоюз","raw":"ЕНИСЕЙАГРОСОЮЗ АО","type":"ПВО","m":[0,25,25,25,25,25,25,25,25,25,25,25],"end":null,"endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Защита Онлайн","raw":"ЗАЩИТА ОНЛАЙН ООО ПКО","type":"ПВО","m":[40,80,80,80,80,80,80,80,110,140,140,140],"end":null,"endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Ломбард 888","raw":"ЛОМБАРД 888 ООО","type":"ПВО","m":[40,43.476,43.476,43.476,43.476,83.2,83.2,83.2,83.2,83.2,83.2,83.2],"end":"2029-01","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"ММЦБ","raw":"ММЦБ","type":"ПВО","m":[3.5,3.5,3.5,3.5,3.5,3.5,3.5,3.5,3.5,3.5,3.5,3.5],"end":"2027-01","endTxt":null,"note":"оплатили до гашения - в СМАРТЕ больше не планируем!","flag":"prepaid","dep":null},{"client":"Нафтатранс","raw":"НАФТАТРАНС ПЛЮС ООО ТК","type":"ПВО","m":[152.28,0,0,0,0,0,0,0,0,0,0,0],"end":null,"endTxt":"дефолт ","note":"дефолт. Оплаты вряд ли будут","flag":"default","dep":null},{"client":"Нео-Пак","raw":"НЕО-ПАК ООО","type":"ПВО","m":[40,50,50,50,50,50,50,50,50,50,50,50],"end":"2031-05","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"НЗРМ","raw":"НЗРМ ООО","type":"ПВО","m":[15,15,15,15,15,15,15,15,15,15,15,15],"end":"2026-12","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Нэппи Клаб","raw":"НЭППИ КЛАБ АО","type":"ПВО","m":[30,42,42,62,62,62,62,62,62,62,62,62],"end":null,"endTxt":"#N/A","note":"дефолт","flag":"default","dep":null},{"client":"ПЮЛ","raw":"ПЕРВЫЙ ЮВЕЛИРНЫЙ ЛОМБАРД ООО","type":"ПВО","m":[0,20,20,40,40,40,40,40,40,40,40,40],"end":"2031-03","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"РСТ","raw":"РСТ ООО","type":"ПВО","m":[0,0,0,15.5,15.5,15.5,15.5,15.5,15.5,15.5,15.5,15.5],"end":null,"endTxt":null,"note":null,"flag":null,"dep":null},{"client":"СДЭК-Глобал","raw":"СДЭК-ГЛОБАЛ ООО","type":"ПВО","m":[80,80,100,100,100,100,100,100,100,100,100,100],"end":"2027-02","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Селл-Сервис","raw":"СЕЛЛ-СЕРВИС ООО","type":"ПВО","m":[50,67,67,67,67,40,40,40,40,40,40,40],"end":"2027-12","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Сибстекло","raw":"СИБСТЕКЛО ООО","type":"ПВО","m":[105,140,140,140,140,180,180,180,180,180,180,180],"end":"2028-09","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"СМАК","raw":"СМАК ООО ПК","type":"ПВО","m":[20,21.738,21.738,21.738,21.738,21.738,21.738,21.738,21.738,21.738,21.738,21.738],"end":"2027-08","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"СЭЗ им. Орджоникидзе","raw":"СЭЗ ИМ. СЕРГО ОРДЖОНИКИДЗЕ, ООО","type":"ПВО","m":[0,16.66,16.66,16.66,16.66,16.66,16.66,16.66,16.66,16.66,16.66,16.66],"end":"2027-09","endTxt":null,"note":"оплатили сразу за год - в СМАРТЕ больше не планируем!","flag":"prepaid","dep":null},{"client":"Транс-Миссия","raw":"ТРАНС-МИССИЯ ООО","type":"ПВО","m":[55,38.041,38.041,38.041,38.041,38.041,38.041,38.041,38.041,38.041,38.041,38.041],"end":"2027-11","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Ультра","raw":"УЛЬТРА ООО","type":"ПВО","m":[55,73.476,73.476,73.476,73.476,73.476,73.476,73.476,73.476,73.476,73.476,73.476],"end":"2027-10","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Феррони","raw":"ФЕРРОНИ ООО","type":"ПВО","m":[401,435.846,435.846,435.846,435.846,435.846,0,0,0,0,0,0],"end":null,"endTxt":"дефолт ","note":"дефолт ","flag":"default","dep":null},{"client":"Феррум","raw":"ФЕРРУМ ООО","type":"ПВО","m":[40,43.476,43.476,43.476,43.476,43.476,43.476,43.476,43.476,43.476,43.476,43.476],"end":"2028-10","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Финкод","raw":"ФИНКОД ООО СФО","type":"ПВО","m":[55,59.4,59.4,59.4,0,0,0,0,0,0,0,0],"end":null,"endTxt":"01.04.2026 смена ПВО","note":"смена ПВО","flag":null,"dep":null},{"client":"Хромос","raw":"ХРОМОС ИНЖИНИРИНГ ООО","type":"ПВО","m":[80,120,120,120,120,120,120,120,120,120,120,120],"end":"2029-07","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"ЮДП Авто","raw":"Ю ДИ ПИ АВТО ООО","type":"ПВО","m":[40,43.476,43.476,43.476,43.476,43.476,43.476,43.476,43.476,43.476,43.476,43.476],"end":"2029-04","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Юниметрикс","raw":"ЮНИМЕТРИКС ООО","type":"ПВО","m":[10,40,40,40,40,40,40,40,0,0,0,0],"end":"2026-08","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Филберт","raw":"Филберт","type":"ПВО","m":[0,0,0,0,0,0,40,40,40,40,40,80],"end":null,"endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Металтрейд","raw":"Металтрейд","type":"ПВО","m":[0,0,0,0,0,0,0,30,30,30,30,30],"end":null,"endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Капдорстрой","raw":"Капдорстрой","type":"ПВО","m":[0,0,0,0,0,0,0,0,30,30,30,30],"end":null,"endTxt":null,"note":null,"flag":null,"dep":null},{"client":"СПб Лифтовый завод","raw":"СПБ Лифтовый завод","type":"ПВО","m":[0,0,0,0,0,0,0,0,0,0,0,0],"end":null,"endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Людиновокабель","raw":"Людиновокабель","type":"ПВО","m":[0,0,0,0,0,0,0,0,0,0,45,45],"end":null,"endTxt":null,"note":null,"flag":null,"dep":"Людиновокабель БО-01"},{"client":"Виртекс","raw":"Виртекс","type":"ПВО","m":[0,0,0,0,0,0,0,0,0,30,30,30],"end":null,"endTxt":null,"note":null,"flag":null,"dep":"Виртекс БО-01"},{"client":"Агима","raw":"Агима","type":"ПВО","m":[0,0,0,0,0,0,0,0,0,0,20,20],"end":null,"endTxt":null,"note":null,"flag":null,"dep":"Агима БО-01"},{"client":"ДжетЛенд","raw":"ДЖЕТЛЕНД ООО","type":"РИ","m":[11.64,11.64,11.64,11.64,11.64,11.64,11.64,0,0,0,0,0],"end":null,"endTxt":"#N/A","note":null,"flag":null,"dep":null},{"client":"Магнат","raw":"МАГНАТ ООО","type":"РИ","m":[10,10,10,10,10,10,10,10,10,10,10,10],"end":null,"endTxt":"#N/A","note":null,"flag":null,"dep":null},{"client":"Нафтатранс","raw":"НАФТАТРАНС ПЛЮС ООО ТК","type":"РИ","m":[36.48,36.48,36.48,36.48,36.48,36.48,36.48,36.48,36.48,36.48,36.48,36.48],"end":"2026-04","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Нео-Пак","raw":"НЕО-ПАК ООО","type":"РИ","m":[10,10,10,10,10,10,10,10,10,10,10,10],"end":"2031-05","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"НЗРМ","raw":"НЗРМ ООО","type":"РИ","m":[18.72,18.72,18.72,18.72,18.72,18.72,18.72,18.72,18.72,18.72,18.72,18.72],"end":"2026-12","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Нэппи Клаб","raw":"НЭППИ КЛАБ ООО","type":"РИ","m":[9,9,9,0,0,0,0,0,0,0,0,0],"end":null,"endTxt":"#N/A","note":null,"flag":null,"dep":null},{"client":"СДЭК-Глобал","raw":"СДЭК-ГЛОБАЛ ООО","type":"РИ","m":[19.8,19.8,19.8,19.8,0,0,0,0,0,0,0,0],"end":"2026-04","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Селл-Сервис","raw":"СЕЛЛ-Сервис ООО","type":"РИ","m":[12.2,12.2,12.2,12.2,12.2,12.2,12.2,12.2,12.2,12.2,12.2,12.2],"end":"2027-12","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Сибстекло","raw":"Сибстекло ООО","type":"РИ","m":[25.8,25.8,25.8,25.8,25.8,25.8,25.8,25.8,25.8,25.8,25.8,25.8],"end":"2028-09","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"СМАК","raw":"СМАК ООО ПК","type":"РИ","m":[10.8,10.8,10.8,10.8,10.8,10.8,10.8,10.8,10.8,10.8,10.8,10.8],"end":"2027-08","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Транс-Миссия","raw":"ТРАНС-МИССИЯ ООО","type":"РИ","m":[6.9,6.9,6.9,6.9,6.9,6.9,6.9,6.9,6.9,6.9,6.9,6.9],"end":"2027-11","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Ультра","raw":"УЛЬТРА ООО","type":"РИ","m":[11.76,11.76,11.76,11.76,11.76,11.76,11.76,11.76,11.76,11.76,11.76,11.76],"end":"2027-10","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Феррони","raw":"ФЕРРОНИ ООО","type":"РИ","m":[33.24,33.24,33.24,33.24,33.24,33.24,0,0,0,0,0,0],"end":null,"endTxt":"дефолт","note":null,"flag":"default","dep":null},{"client":"Феррум","raw":"ФЕРРУМ ООО","type":"РИ","m":[20,20,20,20,20,20,20,20,20,20,20,20],"end":"2028-10","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Хромос","raw":"ХРОМОС ИНЖИНИРИНГ ООО","type":"РИ","m":[19.98,19.98,19.98,19.98,19.98,19.98,19.98,19.98,19.98,19.98,19.98,19.98],"end":"2029-07","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Чистая планета","raw":"ЧИСТАЯ ПЛАНЕТА ООО","type":"РИ","m":[0,0,0,0,0,0,0,0,0,0,0,0],"end":null,"endTxt":"Дефолт, приостановка","note":null,"flag":"default","dep":null},{"client":"ЮДП Авто","raw":"Ю ДИ ПИ АВТО ООО","type":"РИ","m":[23,23,23,23,23,23,23,23,23,23,23,23],"end":"2029-04","endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Юниметрикс","raw":"ЮНИМЕТРИКС ООО","type":"РИ","m":[5,5,5,5,5,5,5,5,0,0,0,0],"end":null,"endTxt":"#N/A","note":null,"flag":null,"dep":null},{"client":"Филберт","raw":"Филберт","type":"РИ","m":[0,0,0,0,0,0,0,10,10,10,10,20],"end":null,"endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Металтрейд","raw":"Металтрейд","type":"РИ","m":[0,0,0,0,0,0,0,10,10,10,10,10],"end":null,"endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Капдорстрой","raw":"Капдорстрой","type":"РИ","m":[0,0,0,0,0,0,0,0,10,10,10,10],"end":null,"endTxt":null,"note":null,"flag":null,"dep":null},{"client":"СПб Лифтовый завод","raw":"СПБ Лифтовый завод","type":"РИ","m":[0,0,0,0,0,0,0,0,0,0,0,0],"end":null,"endTxt":null,"note":null,"flag":null,"dep":null},{"client":"Людиновокабель","raw":"Людиновокабель","type":"РИ","m":[0,0,0,0,0,0,0,0,0,0,10,10],"end":null,"endTxt":null,"note":null,"flag":null,"dep":"Людиновокабель БО-01"},{"client":"Виртекс","raw":"Виртекс","type":"РИ","m":[0,0,0,0,0,0,0,0,0,10,10,10],"end":null,"endTxt":null,"note":null,"flag":null,"dep":"Виртекс БО-01"},{"client":"Агима","raw":"Агима","type":"РИ","m":[0,0,0,0,0,0,0,0,0,0,10,10],"end":null,"endTxt":null,"note":null,"flag":null,"dep":"Агима БО-01"}],"others":{"Консалтинг":[0,0,50,0,0,150,130,130,130,130,130,0],"Рейтинги":[85,85,85,170,340,255,255,255,730,170,170,170],"Отчёты и презентации":[0,0,153.15,84,150.62,0,0,0,0,0,0,0],"Сопровождение АПО":[0,0,50,0,0,260,0,0,0,0,0,0],"Оферты":[0,284,0,467,18,10.237,0,0,100,0,0,0],"Дефолты":[0,0,0,1000,1000,0,0,0,0,0,0,0],"Агентское (ММ и др.)":[0,0,0,0,0,178.625,77,165,90,120,0,65]},"file":{"row3":[14059.933,8710.147,8686.774000000001,5133.904,5652.116,6932.654,6637.030999999999,9514.2795,18068.566,14455.545999999998,19340.012988,16476.566],"bonds":[11012,5065,4982.22,0,1000,2863,3182.5199999999995,5771.676500000001,13792,10618.98,15230.446988,12332],"sopr":[2962.9330000000004,3276.1470000000004,3366.4040000000005,3412.9040000000005,3143.496,3215.7920000000004,2992.511,3192.6029999999996,3226.566,3416.566,3809.566,3909.566]},"funnel":{"src":["Миша","Женя","Леша","Прочие лиды"],"stages":["Звонки","Беседы с ЛПР","ВКС (видеовстреча)","Малая анкета","Большая анкета","Договор подписан","Регистрация выпуска (после решения биржи)","Выпуск (размещение)"],"rows":[[899,770,349,null,2018],[323,461,116,38,938],[12,9,8,38,67],[3,3,1,12,19],[2,1,null,7,10],[1,1,null,6,8],[null,null,null,4,4],[1,1,0,2,4]],"best":[0.5987012987012987,0.06896551724137931,0.3333333333333333,0.5526315789473685,0.6031746031746031,1.0,1.0]},"unit":{"names":["КДС","Металлтрейд","филберт","виртекс","Людиново","Аквилон"],"size":[250000000,250000000,500000000,100000000,300000000,150000000],"pct":[0.03,0.03,0.0175,0.0275,0.03,0.03],"agent":[7500000,7500000,8750000,2750000,9000000,4500000],"legal":[1200000,1000000,400000,1200000,1000000,1000000],"ir":[150000,150000,50000,120000,200000,120000],"pvo":[30000,30000,35000,20000,45000,30000],"mm":[35000,35000,50000,20000,50000,35000],"avg":{"size":258333333.33333334,"pct":0.0275,"agent":6666666.666666667,"legal":966666.6666666666,"ir":131666.66666666666,"pvo":31666.666666666668,"mm":37500,"ltv":13658333.333333332,"lead":441916.66666666674}},"comments":{"agentsFunnel":{"leads":64,"deny":20,"vks":28,"inwork":21,"sales":3},"agentRateAvg":0.1473,"agentRatesKnown":{"Турлов":0.1037,"Орби":0.25,"Владимир Нелюбов":0.2592,"Вехов":0.2073,"Совком":0.25,"Рынок взыскания":0.1037,"Чубко (<500 млн)":0.2073},"eventsFunnel":{"calls":671,"meet":300,"talk":81,"vks":37,"sales":2},"siteSelfTotal":{"y2025":{"site":3,"self":1},"y2026":{"site":2,"self":1}},"periodMonths":15,"leadsBySource":{"y2025":{"total":90,"КО":33,"мероприятия":13,"агенты":25,"сайт":3,"АВ":15,"самоход":1},"y2026":{"total":64,"КО":20,"мероприятия":8,"агенты":28,"сайт":2,"АВ":5,"самоход":1}},"agentStats":{"Турлов":[40,16,13,5,0],"Орби":[4,0,4,3,1],"Павел БКС":[4,1,2,1,0],"Владимир Нелюбов":[3,0,3,3,1],"Георгий Вехов":[3,0,2,3,0],"МСП Банк":[2,1,1,1,0],"Цифра Брокер":[2,1,1,0,1],"Чупко Михаил":[2,1,1,1,0],"Андрей Долгих":[1,0,0,1,0],"АО Реестр":[1,0,0,1,0],"Дмитрий Виншу":[1,0,1,1,0],"Лика":[1,0,0,1,0]},"agentRateDefault":{"Турлов":0.1037,"Орби":0.25,"Владимир Нелюбов":0.2592,"Павел БКС":0.2055,"МСП Банк":0.2055,"Цифра Брокер":0.2055,"Андрей Долгих":0.2055,"АО Реестр":0.2055,"Дмитрий Виншу":0.2055,"Лика":0.2055,"Георгий Вехов":0.2073,"Чупко Михаил":0.2073},"agentRateSrc":{"Турлов":"known","Орби":"known","Владимир Нелюбов":"known","Павел БКС":"estimate","МСП Банк":"estimate","Цифра Брокер":"estimate","Андрей Долгих":"estimate","АО Реестр":"estimate","Дмитрий Виншу":"estimate","Лика":"estimate","Георгий Вехов":"known","Чупко Михаил":"known"},"eventsCost":{"perMeet":7233,"paidBudget":2170000,"paidMeet":300,"paidEvents":14,"unattributedBudget":22000,"unattributedEvent":"Технопарк","minPerEvent":135000,"freqPerMonth":1},"fileNotes30_09":{"cycleMonths":9.6,"svcMonths":36,"sameCloseProb":true,"excludeABgoal":true,"partial":{"Металлтрейд":[250,50],"Капдорстрой":[250,75]}},"ratings":{"scale":{"D":0,"CC":1,"CCC":2,"B-":3,"B":4,"B+":5,"BB-":6,"BB":7,"BB+":8,"BBB-":9,"BBB":10,"BBB+":11,"A-":12,"A":13,"A+":14,"AA-":15,"AA":16,"AA+":17,"AAA":18},"empirical":{"placedAvg":6.09,"notPlacedAvg":5.5,"byTier":{"low":{"placed":4,"total":6},"mid":{"placed":17,"total":21},"high":{"placed":2,"total":2}}},"note":"Рейтинг известен у 29 из 35 клиентов реестра. «Низкий» — CCC..B, «Средний» — B+..BB+, «Высокий» — BBB- и выше. Доля размещённых растёт с рейтингом (67% → 81% → 100%), но выборка маленькая, особенно верхняя группа (2 клиента). Агентство: Э (Эксперт РА) и А (АКРА) считаются в глазах инвесторов выше, НРА и НКР — ниже; это относительный, не официальный критерий — агентство клиенту фактически рекомендует сама компания."}}};
+const MN = ['янв','фев','мар','апр','май','июн','июл','авг','сен','окт','ноя','дек'];
+const MLAB = Array.from({length:24},(_,i)=>MN[i%12]+' '+(i<12?'26':'27'));
+const CUT = 8;                       // первый расчётный месяц (сен 2026); ранее — данные файла
+const CHS = ['КО','АВ','Агент','Мероприятие','Сайт','Не указан'];
+const CH_ALL = [...CHS,'Прочее'];
+const YTD_MONTHS = 8.55;             // 01.01–17.09.2026
+const STAGE_OPTS = {s4:'Договор на согласовании / направлен',s5:'Договор подписан',s6:'Регистрация / торги / решение биржи',s7:'Уже в размещении'};
+
+/* --- исходные показатели воронки КО (лист «Этапы воронки», только звонки менеджеров) --- */
+const F = DATA.funnel;
+const _g=(k,j)=>F.rows[k][j]||0;
+const MG = F.rows.map((r,k)=>_g(k,0)+_g(k,1)+_g(k,2));   // менеджеры: 2018, 900, 29, 7, 3, 2, 0, 2
+const TOT = F.rows.map(r=>r[4]);                          // 2018, 938, 67, 19, 10, 8, 4, 4
+const LATE = [TOT[5]/TOT[4], TOT[6]/TOT[5], TOT[7]/TOT[6]];
+const KO_C = [MG[1]/MG[0], MG[2]/MG[1], MG[3]/MG[2], MG[4]/MG[3], ...LATE];
+
+/* --- новые источники из «Комментарии к новой воронке» + расчёта к ним --- */
+const CM = DATA.comments;
+const AGF = CM.agentsFunnel, EVF = CM.eventsFunnel, PM = CM.periodMonths;
+const siteTot = CM.siteSelfTotal, ST_LEADS = siteTot.y2025.site+siteTot.y2025.self+siteTot.y2026.site+siteTot.y2026.self;
+
+/* --- метаданные каналов: единицы входа, названия этапов, индекс этапа «подписано» --- */
+const CHMETA = {
+  KO:{entryField:'calls',div:1,unitLabel:'Звонков в месяц',contractsIdx:5,
+      labels:['Звонки','Беседы с ЛПР','ВКС (видеовстреча)','Малая анкета','Большая анкета','Договор подписан','Регистрация выпуска (решение биржи)','Выпуск (размещение)']},
+  AB:{entryField:'calls',div:1,unitLabel:'Рекомендаций в месяц',contractsIdx:1,
+      labels:['Рекомендация (вход)','Договор подписан','Регистрация выпуска (решение биржи)','Выпуск (размещение)']},
+  AG:{entryField:'calls',div:1,unitLabel:'Лидов в месяц',contractsIdx:2,
+      labels:['Лид (вход)','ВКС (видеовстреча)','В работе','Выпуск (сделка закрыта)']},
+  EV:{entryField:'calls',div:1,unitLabel:'Знакомств в месяц',contractsIdx:2,
+      labels:['Знакомство (вход)','Беседа с ЛПР','ВКС (видеовстреча)','Выпуск (сделка закрыта)']},
+  ST:{entryField:'calls',div:1,unitLabel:'Лидов в месяц',contractsIdx:0,
+      labels:['Лид (вход)','Выпуск (сделка закрыта)']}
+};
+const CHNAME2KEY = {'КО':'KO','Агент':'AG','Мероприятие':'EV','Сайт':'ST'}; // остальное → AB
+const key = ch => CHNAME2KEY[ch] || 'AB';
+const KEY2CHNAME = {KO:'КО',AB:'АВ',AG:'Агент',EV:'Мероприятие',ST:'Сайт'};
+
+const A0 = {
+  effFrom:9, lagKO:9, lagCon:9, shift:0, flowFrom:12, bridge:0.5,  // цикл сделки 9,6 мес. в среднем — лист «Лиды разбор», комментарий от 30.09
+  koAgent:6666.667, koNet:0.60, koLegal:966.667, koIr:131.667, koPvo:31.667, koMm:37.5, koVol:258.333, koSvcMonths:36, leadPct:0.05,   // «средний срок выпуска 36 мес» — лист «Лиды разбор», комментарий от 30.09
+  nAgent:3492, nLegal:479, nSvc:150, nVol:181, nNew:0.27,
+  tailSign:KO_C[4], tailReg:KO_C[5], tailPlace:KO_C[6], // = реальные конверсии КО («дожимает лида всё равно клиентский отдел» — комментарий от 30.09)
+  ratingLow:0.85, ratingMid:1.0, ratingHigh:1.15,   // поправка к вероятности размещения по рейтингу клиента (эмпирически: 67%/81%/100% размещённых по рейтинговым группам, лист «Клиенты», обновление от 01.10)
+  koFot:300,                                        // ФОТ клиентского отдела, тыс. ₽ в месяц — делится между всеми источниками пропорционально их потоку
+  idx:0, renew:0, otherPct:0.069, otherFile:1,
+  pipeRealize:1.0   // доля от заявленного объёма, которая реально размещается (кроме сделок «уже в размещении»); по умолчанию без дисконта
+};
+const BASE0 = {
+  KO:{calls:MG[0]/YTD_MONTHS, c:[...KO_C]},
+  AB:{calls:20/PM, c:[21/28, KO_C[5], KO_C[6]]}, // 20 лидов АВ за 15 мес.; 21 из 28 клиентов АВ реестра дошли до выпуска; регистрация/выпуск = конверсии КО (см. A.tailReg)
+  AG:{calls:AGF.leads/PM, c:[AGF.vks/AGF.leads, AGF.inwork/AGF.vks, AGF.sales/AGF.inwork]}, // 64 лида, 28 ВКС, 21 в работе, 3 продажи — по кварталам листа «Агенты»
+  EV:{calls:EVF.meet/PM, c:[EVF.talk/EVF.meet, EVF.vks/EVF.talk, EVF.sales/EVF.vks]},
+  ST:{calls:ST_LEADS/PM, c:[0.05]}
+};
+/* диапазон неопределённости потока новых клиентов (применяется только в расчёте диапазона) */
+const RANGE0 = { low:{flow:0.7, leads:0.5, dConv:-0.10}, high:{flow:1.2, leads:1.3, dConv:0.03} };
+const NEUT = {flow:1, leads:1, dConv:0};
+let PR = NEUT;
+const clone = o=>JSON.parse(JSON.stringify(o));
+
+const S = {
+  tab:'funnel', fk:'KO', horizon:'ytd', money:'gross', tMode:'pp', tX:2,
+  fcSet:'scen', fcGroup:'layers',
+  A: clone(A0),
+  base: clone(BASE0),
+  scen: clone(BASE0),
+  range: clone(RANGE0),
+  clientCh: {},
+  stage: {},
+  agentRates: clone(CM.agentRateDefault)   // ставка вознаграждения по каждому агенту, % от агентского; можно менять индивидуально
+};
+/* средняя ставка вознаграждения агентам, взвешенная по числу лидов каждого агента (лист «Агенты») */
+function agentCommRate(){
+  let sw=0, sr=0;
+  for(const n in CM.agentStats){ const w=CM.agentStats[n][0], r=S.agentRates[n]; sw+=w; sr+=w*r; }
+  return sw?sr/sw:CM.agentRateAvg;
+}
+DATA.clients.forEach(c=>{ S.clientCh[c.name]=c.ch; });
+const chOf = n => S.clientCh[n] || 'Не указан';
+
+/* --- позиции pipeline: выпуски из плана доходов + позиции только из pipeline --- */
+const ITEMS = [];
+DATA.issues.forEach(i=>ITEMS.push({...i, kind:'plan'}));
+DATA.extra.forEach(e=>ITEMS.push({...e, kind:'extra', legal26:null, agent26:null}));
+ITEMS.forEach(it=>{ S.stage[it.name]=it.stage; });
+
+/* вероятность размещения по этапу сделки: у КО — собственные конверсии последних трёх этапов,
+   у остальных каналов — общая «хвостовая» вероятность (подписание/регистрация/выпуск) */
+function pStage(st, ck, cv){
+  const A=S.A;
+  if(ck==='KO'){ const c=cv.c; if(st==='s4') return c[4]*c[5]*c[6]; if(st==='s5') return c[5]*c[6]; if(st==='s6') return c[6]; return 1; }
+  if(ck==='AB'){ const c=cv.c; if(st==='s4') return A.tailSign*c[1]*c[2]; if(st==='s5') return c[1]*c[2]; if(st==='s6') return c[2]; return 1; }
+  if(st==='s4') return A.tailSign*A.tailReg*A.tailPlace;
+  if(st==='s5') return A.tailReg*A.tailPlace;
+  if(st==='s6') return A.tailPlace;
+  return 1;
+}
+function cvOfK(set,ck,m){
+  const src = (set==='scen' && m>=S.A.effFrom) ? S.scen : S.base; const cv=src[ck];
+  if(ck==='AB' && PR.dConv){ const c=cv.c.slice(); [1,2].forEach(i=>c[i]=Math.min(1,Math.max(0,c[i]+PR.dConv))); return {...cv,c}; }
+  return cv;
+}
+/* --- затраты по каналам: ФОТ клиентского отдела делится пропорционально входящему потоку
+   («отдел подключается к клиенту из любой воронки, без него он не реализуется» — комментарий от 01.10) --- */
+function channelCosts(){
+  const A=S.A, chs=['KO','AB','AG','EV','ST'];
+  const entry = {}; chs.forEach(ck=>{ const m=CHMETA[ck], cv=S.base[ck]; entry[ck]=(m.entryField==='N'?cv.N/12:cv.calls); });
+  const totalEntry = chs.reduce((s,ck)=>s+entry[ck],0);
+  const iss1 = {}; chs.forEach(ck=>{ iss1[ck]=funnelResult(ck,S.base[ck],1,'net').iss; });
+  const known = {KO:0,AB:0,ST:0};
+  known.AG = S.A.nAgent*agentCommRate()*iss1.AG;                 // вознаграждение, реально выплаченное агентам в месяц
+  known.EV = CM.eventsCost.perMeet*entry.EV/1000;                // известный бюджет мероприятий в месяц, тыс. ₽
+  const out={};
+  chs.forEach(ck=>{
+    const fot = A.koFot*(totalEntry?entry[ck]/totalEntry:0);
+    const tot = known[ck]+fot;
+    out[ck]={entry:entry[ck],iss:iss1[ck],known:known[ck],fot,total:tot,
+      perLead: entry[ck]?tot/entry[ck]:0, perClient: iss1[ck]?tot/iss1[ck]:0};
+  });
+  return out;
+}
+const RATING = {}; DATA.clients.forEach(c=>{ if(c.ratingNum!=null) RATING[c.name]=c.ratingNum; });
+function ratingTier(num){ return num<=4?'Low':num<=8?'Mid':'High'; }
+function ratingMult(issuer){
+  const num = RATING[issuer]; if(num==null) return 1;
+  return S.A['rating'+ratingTier(num)];
+}
+function itemByName(n){ return ITEMS.find(i=>i.name===n); }
+function itemP(it,set,m){ const ck=key(chOf(it.issuer)), st=S.stage[it.name]; const mult=(st==='s7')?1:ratingMult(it.issuer); return Math.max(0, Math.min(1, pStage(st, ck, cvOfK(set,ck,m))*mult)); }
+
+/* выручка позиции по месяцам (тыс. руб.) */
+function itemRev(it){
+  if(it.kind==='plan'){
+    const a=new Array(24).fill(0);
+    for(let m=0;m<12;m++) a[m]=(it.legal26[m]||0)+(it.agent26[m]||0);
+    return {legal:it.legal26.concat(new Array(12).fill(0)), agent:it.agent26.concat(new Array(12).fill(0)), tot:a};
+  }
+  const legal=new Array(24).fill(0), agent=new Array(24).fill(0), tot=new Array(24).fill(0);
+  const A=S.A, mAgent=it.planIdx, mLegal=Math.max(CUT,it.planIdx-1);
+  agent[mAgent]=A.nAgent*it.vol/A.nVol; legal[mLegal]=A.nLegal;
+  for(let m=0;m<24;m++) tot[m]=agent[m]+legal[m];
+  return {legal,agent,tot};
+}
+
+function compute(set,pr){
+  PR=pr||NEUT;
+  try{ return compute_(set); } finally { PR=NEUT; }
+}
+function compute_(set){
+  const A=S.A, R={ser:{},cnt:{},cli:{},issuesFact:0,cntMonth:new Array(24).fill(0),volMonth:new Array(24).fill(0)};
+  const add=(layer,ch,type,m,v)=>{ if(m<0||m>=24||!v) return; const k=layer+'|'+ch+'|'+type; (R.ser[k]||(R.ser[k]=new Array(24).fill(0)))[m]+=v; };
+  const addCli=(n,m,v)=>{ if(!v) return; const o=R.cli[n]||(R.cli[n]=[0,0]); o[m<12?0:1]+=v; };
+  const addCnt=(ch,m,n)=>{ if(!n) return; const o=R.cnt[ch]||(R.cnt[ch]=[0,0]); o[m<12?0:1]+=n; };
+  const addMonth=(m,n,vol)=>{ if(m<0||m>=24) return; R.cntMonth[m]+=n; R.volMonth[m]+=vol; };
+  const bond2027=new Array(24).fill(0);
+
+  /* 1) выпуски: факт (янв–авг 2026) и pipeline с вероятностями (сен 2026 →) */
+  ITEMS.forEach(it=>{
+    const ch=chOf(it.issuer), rv=itemRev(it);
+    for(let m=0;m<24;m++){
+      const amt=rv.tot[m]; if(!amt) continue;
+      if(m<CUT){ add('fact',ch,'issue',m,amt); addCli(it.issuer,m,amt); }
+      else{
+        const mm=m+A.shift; if(mm>23) continue;
+        const p=itemP(it,set,mm), real=(S.stage[it.name]==='s7'?1:A.pipeRealize);
+        const v=amt*p*real;
+        add('pipe',ch,'issue',mm,v); addCli(it.issuer,mm,v);
+        if(mm>=12) bond2027[mm]+=v;
+      }
+    }
+    if(it.vol>0 && it.planIdx!=null){
+      if(it.planIdx<CUT){ if(it.kind==='plan' && it.agent26.some(x=>x>0)){ addCnt(ch,it.planIdx,1); addMonth(it.planIdx,1,it.vol); } }
+      else { const mm=it.planIdx+A.shift, p=itemP(it,set,mm); addCnt(ch,mm,p); addMonth(mm,p,it.vol*p*(S.stage[it.name]==='s7'?1:A.pipeRealize)); }
+    }
+  });
+
+  /* 2) сопровождение действующих клиентов (IR + ПВО + РИ) */
+  DATA.services.forEach(s=>{
+    const ch=chOf(s.client);
+    let w=1;
+    for(let m=0;m<24;m++){
+      let v=0;
+      if(m<12) v=s.m[m];
+      else{
+        const r=s.m[11];
+        if(r>0 && !s.flag){
+          let ok=true;
+          if(s.end){ const [y,mo]=s.end.split('-').map(Number); const endIdx=(y-2026)*12+mo-1; if(m>endIdx) ok=false; }
+          v = r*(1+A.idx)*(ok?1:A.renew);
+        }
+      }
+      if(!v) continue;
+      if(m<CUT){ add('fact',ch,'svc',m,v); addCli(s.client,m,v); }
+      else{
+        if(s.dep){ const it=itemByName(s.dep); w=it?itemP(it,set,m):1; }
+        add('svc',ch,'svc',m,v*w); addCli(s.client,m,v*w);
+      }
+    }
+  });
+
+  /* 3) прочие услуги (консалтинг, рейтинги и т.д.) */
+  for(let m=0;m<12;m++){
+    let v=0; Object.values(DATA.others).forEach(a=>v+=a[m]);
+    if(m<CUT) add('fact','Прочее','other',m,v); else add('other','Прочее','other',m,v*A.otherFile);
+  }
+
+  /* 4) новые клиенты: когорты входа месяца s дают выпуски в месяце t = s + лаг.
+        Когорты после начала прогноза (s ≥ CUT) учитываются полностью; когорты, уже находящиеся
+        в воронке (s < CUT), — в доле A.bridge (остальное уже видно в pipeline). Агенты, Мероприятия
+        и Сайт — источники с маленькой выборкой, поэтому к ним дополнительно применяется PR.leads. */
+  const svcKO=(A.koIr+A.koPvo+A.koMm), svcNet=A.nNew*A.nSvc;
+  for(let t=A.flowFrom;t<24;t++){
+    ['KO','AB','AG','EV','ST'].forEach(ck=>{
+      const lag = ck==='KO'?A.lagKO:A.lagCon;
+      const s=t-lag, extra=(ck==='KO'||ck==='AB')?1:PR.leads;
+      const w=(s>=CUT?1:A.bridge)*PR.flow*extra, sm=Math.max(s,0);
+      const cv=cvOfK(set,ck,sm), m=CHMETA[ck];
+      const entry=(m.entryField==='N'?cv.N:cv.calls)/m.div;
+      let n=w*entry; cv.c.forEach(c=>n*=c);
+      const u=unitValue(ck,'net');
+      const rev=n*(u.agent+u.legal);
+      const chName=KEY2CHNAME[ck];
+      add('flow',chName,'issue',t,rev); bond2027[t]+=rev; addCnt(chName,t,n); addMonth(t,n,n*u.vol);
+      const svcM = ck==='KO'?svcKO:svcNet;
+      for(let u2=t+1;u2<24;u2++) add('flow',chName,'svc',u2,n*svcM);
+    });
+  }
+  /* 5) прочие услуги 2027 — доля от выручки по выпускам */
+  for(let m=12;m<24;m++) add('other','Прочее','other',m,bond2027[m]*A.otherPct);
+  return R;
+}
+function agg(R,f={}){
+  const out=new Array(24).fill(0);
+  for(const k in R.ser){ const [l,c,t]=k.split('|');
+    if(f.layer&&f.layer!==l) continue; if(f.ch&&f.ch!==c) continue; if(f.type&&f.type!==t) continue;
+    const a=R.ser[k]; for(let m=0;m<24;m++) out[m]+=a[m]; }
+  return out;
+}
+const yrs = a=>[a.slice(0,12).reduce((x,y)=>x+y,0), a.slice(12).reduce((x,y)=>x+y,0)];
+const sumA = a=>a.reduce((x,y)=>x+y,0);
+
+/* --- воронка --- */
+function unitValue(ck,mode){
+  const A=S.A;
+  if(ck==='KO'){
+    const ag=A.koAgent*(mode==='net'?A.koNet:1), sv=A.koIr+A.koPvo+A.koMm;
+    const total=ag+A.koLegal+sv*A.koSvcMonths;
+    return {agent:ag,legal:A.koLegal,svc:sv*A.koSvcMonths,svcM:sv,total,lead:A.leadPct*(ag+A.koLegal+sv*6),vol:A.koVol};
+  }
+  const ag=A.nAgent*(ck==='AG'?(1-agentCommRate()):1);
+  const svc=A.nNew*A.nSvc*A.koSvcMonths;
+  return {agent:ag,legal:A.nLegal,svc,svcM:A.nNew*A.nSvc,total:ag+A.nLegal+svc,lead:0,vol:A.nVol};
+}
+function chainCounts(cv,ck,months){
+  const m=CHMETA[ck], entry=(m.entryField==='N'?cv.N:cv.calls)/m.div;
+  const n=[entry*months]; cv.c.forEach(c=>n.push(n[n.length-1]*c)); return n;
+}
+function funnelResult(ck,cv,months,mode){
+  const u=unitValue(ck,mode), n=chainCounts(cv,ck,months), iss=n[n.length-1];
+  return {n,iss,contracts:n[CHMETA[ck].contractsIdx],vol:iss*u.vol,value:iss*u.total,lead:iss*u.lead,agent:iss*u.agent,legal:iss*u.legal,svc:iss*u.svc,u};
+}
+function writeConv(obj,ck,k,v){ obj[ck].c[k]=v; }
+function leverEffects(ck,mode,x){
+  const months=S.horizon==='ytd'?YTD_MONTHS:12, B=S.base, labels=CHMETA[ck].labels;
+  const ev=cv=>funnelResult(ck,cv,months,S.money);
+  const r0=ev(B[ck]); const out=[];
+  if(mode!=='best'){
+    const xv=mode==='rel'?x:10, t=clone(B[ck]);
+    const m=CHMETA[ck]; if(m.entryField==='N') t.N*=1+xv/100; else t.calls*=1+xv/100;
+    const r=ev(t);
+    out.push({k:-1,label:m.unitLabel+' +'+xv+'%',dI:r.iss-r0.iss,dV:r.value-r0.value});
+  }
+  for(let k=0;k<B[ck].c.length;k++){
+    const cur=B[ck].c[k]; let nv=cur;
+    if(mode==='rel') nv=Math.min(1,cur*(1+x/100));
+    else if(mode==='pp') nv=Math.min(1,cur+x/100);
+    else nv=(ck==='KO')?Math.max(cur,F.best[k]):cur;
+    if(nv===cur) continue;
+    const t=clone(B[ck]); t.c[k]=nv;
+    const r=ev(t);
+    out.push({k,label:labels[k]+' → '+labels[k+1],dI:r.iss-r0.iss,dV:r.value-r0.value,from:cur,to:nv});
+  }
+  return out.sort((a,b)=>b.dV-a.dV);
+}
+
+/* ===================== ИНТЕРФЕЙС ===================== */
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const nf=(v,d=1)=>v.toLocaleString('ru-RU',{minimumFractionDigits:d,maximumFractionDigits:d});
+const fM=v=>nf(v/1000,1);                       // тыс. → млн
+const sgn=(v,f)=>(v>0.0499?'+':v<-0.0499?'−':'')+f(Math.abs(v));
+const dM=v=>sgn(v/1000,x=>nf(x,1));
+const P=v=>nf(v*100,1)+'%';
+const cls=v=>v>0.0001?'pos':v<-0.0001?'neg':'';
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const LAYERS=[['fact','Факт, янв–авг 2026','--l-fact'],['svc','Сопровождение действующих','--l-svc'],['pipe','Выпуски из pipeline','--l-pipe'],['flow','Новые клиенты из воронки','--l-flow'],['other','Прочие услуги','--l-other']];
+const CHCOL={'КО':'--c-ko','АВ':'--c-ab','Агент':'--c-ag','Мероприятие':'--c-ev','Сайт':'--c-st','Не указан':'--c-un','Прочее':'--c-ot'};
+const CHBTN={KO:'КО: холодные звонки',AB:'АВ',AG:'Агенты',EV:'Мероприятия',ST:'Сайт и самоход'};
+const CHDESC={
+  KO:'КО — клиентский отдел, звонки трёх менеджеров. Издержки: покупка баз, премия за размещённый выпуск.',
+  AB:'АВ — рекомендации, которые стекаются собственнику. Без издержек на привлечение.',
+  AG:'Агенты — у каждого своя ставка вознаграждения, платится после размещения (см. Допущения).',
+  EV:'Мероприятия — конференции и выставки. Издержки: командировки, известны по части мероприятий (см. примечание ниже).',
+  ST:'Сайт и самоход — входящие заявки. Издержки: реклама (сумм в расчёте нет).'
+};
+const cssv=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+
+let RB,RS,RNG;
+function recalc(){ RB=compute('base'); RS=compute('scen'); RNG={}; ['low','high'].forEach(p=>{ RNG[p]={base:compute('base',S.range[p]),scen:compute('scen',S.range[p])}; }); }
+const yy=(R,f)=>yrs(agg(R,f));
+
+/* ---------- доступ к состоянию по пути ---------- */
+function getP(path){ return path.split('.').reduce((o,k)=>o[k],S); }
+function setP(path,v){ const p=path.split('.'); const last=p.pop(); const o=p.reduce((a,k)=>a[k],S); o[last]=v; }
+
+/* ---------- верхняя строка итогов ---------- */
+function refreshTop(){
+  const b=yrs(agg(RB)), s=yrs(agg(RS));
+  $('#ledger').innerHTML=
+   `<span class="h"></span><span class="h">База</span><span class="h">Сценарий</span><span class="h">Разница</span>`+
+   [0,1].map(i=>`<span class="r">Выручка ${2026+i}, млн ₽</span><span>${fM(b[i])}</span><span>${fM(s[i])}</span><span class="d ${cls(s[i]-b[i])}">${dM(s[i]-b[i])}</span>`).join('');
+  const lb=yrs(agg(RNG.low.base))[1], hb=yrs(agg(RNG.high.base))[1], ls=yrs(agg(RNG.low.scen))[1], hs=yrs(agg(RNG.high.scen))[1];
+  $('#rng').innerHTML=`Диапазон 2027: база ${fM(lb)}–${fM(hb)}, сценарий ${fM(ls)}–${fM(hs)}`;
+}
+
+/* ---------- вкладки ---------- */
+const TABS=[['funnel','Воронка'],['forecast','Прогноз 2026–2027'],['calendar','Загруженность'],['compare','Сравнение источников'],['clients','Клиенты и каналы'],['assume','Допущения']];
+function initTabs(){
+  $('#tabs').innerHTML=TABS.map(([k,t])=>`<button role="tab" data-t="${k}" aria-selected="${k===S.tab}">${t}</button>`).join('');
+  $('#tabs').addEventListener('click',e=>{ const b=e.target.closest('button'); if(b) go(b.dataset.t); });
+}
+function go(t){
+  S.tab=t;
+  $$('#tabs button').forEach(b=>b.setAttribute('aria-selected',b.dataset.t===t));
+  $$('section.tab').forEach(s=>s.classList.toggle('on',s.id==='tab-'+t));
+  renderTab();
+}
+function renderTab(){
+  if(S.tab==='funnel') updateFunnel();
+  else if(S.tab==='forecast') renderForecast();
+  else if(S.tab==='clients') renderClients();
+  else if(S.tab==='compare') renderCompare();
+  else if(S.tab==='calendar') renderCalendar();
+  else if(S.tab==='assume') buildAssume();
+}
+function refresh(){ recalc(); refreshTop(); renderTab(); }
+
+/* ===================== ВОРОНКА ===================== */
+function buildFunnel(){
+  const ck=S.fk, m=CHMETA[ck], labels=m.labels;
+  let rows='';
+  labels.forEach((name,j)=>{
+    let conv='';
+    if(j===0){
+      conv=`<div class="cur"><span>${m.unitLabel}</span><span id="cb0"></span></div><div class="in"><input type="number" step="${m.entryField==='N'?'1':'0.1'}" min="0" data-f="vol" aria-label="${name}, сценарий"></div>`;
+    }else{
+      const c=j-1;
+      conv=`<div class="cur"><span>Конверсия</span><span id="cb${j}"></span></div><div class="in"><input type="number" step="0.1" min="0" max="100" data-f="c" data-k="${c}" aria-label="${name}, конверсия в сценарии, %"><span>%</span></div><input type="range" min="0" max="100" step="0.5" data-f="c" data-k="${c}" aria-label="${name}, ползунок">`;
+    }
+    rows+=`<div class="frow" data-j="${j}"><div class="fname">${name}</div><div class="fconv">${conv}</div><div class="fbars"><div class="bb"></div><div class="sb"></div></div><div class="fnum"></div></div>`;
+  });
+  $('#frows').innerHTML=rows;
+  const notes={
+    KO:'Данные листа «Этапы воронки»: только звонки трёх менеджеров (Миша, Женя, Леша), без колонки «Прочие лиды» — та часть потока теперь учтена отдельно в каналах «Агенты», «Мероприятия» и «Сайт». Конверсии здесь усреднены по всем клиентам подряд — а рейтинг клиента, по словам пользователя, тянет в разные стороны: чем выше рейтинг, тем легче разместить (выше конверсия на поздних этапах), но тем труднее продать на входе (клиент «не нуждается», его и так все хотят). Модель эту сегментацию пока не считает — усреднённые цифры могут скрывать, что высокорейтинговых и низкорейтинговых клиентов на самом деле выгодно звать по-разному.',
+    AB:'По каналу нет данных о звонках и анкетах — воронка начинается с подписанного договора. Число договоров в год — оценка по реестру клиентов.',
+    AG:'Данные листа «Агенты» расчёта к комментариям: сумма по всем агентам и кварталам (2 кв. 2025 – 2 кв. 2026), 70 лидов. У каждого агента своя ставка вознаграждения — см. «Допущения».',
+    EV:'Данные листа «Расходы на поездки»: 15 мероприятий, вход — «знакомства» на мероприятии (часть из них получена по звонкам-приглашениям до события, часть — без звонков). Расходы на поездки в расчёте не указаны.',
+    ST:'В расчёте только 7 лидов за полтора года, без разбивки по этапам — конверсия «лид → выпуск» ниже оценена вручную (нет исторических продаж в выборке), при необходимости измените в допущениях.'
+  };
+  $('#fnote').textContent=notes[ck];
+  $('#bestBtn').style.display=ck==='KO'?'':'none';
+  $('#moneyl').style.display=ck==='KO'?'':'none';
+  const opt=$('#tmode').querySelector('option[value=best]'); if(opt) opt.disabled=ck!=='KO';
+  if(ck!=='KO' && S.tMode==='best'){ S.tMode='pp'; $('#tmode').value='pp'; $('#tx').style.display=''; $('#txl').style.display=''; }
+}
+function updateFunnel(){
+  const ck=S.fk;
+  const months=S.horizon==='ytd'?YTD_MONTHS:12;
+  const r0=funnelResult(ck,S.base[ck],months,S.money), r1=funnelResult(ck,S.scen[ck],months,S.money);
+  const maxN=Math.max(r0.n[0],r1.n[0],1), lg=n=>Math.max(1.2,Math.log10(1+n)/Math.log10(1+maxN)*100);
+  const act=document.activeElement;
+  $$('#frows .frow').forEach(row=>{
+    const j=+row.dataset.j, n0=r0.n[j], n1=r1.n[j], d=n1-n0;
+    $('.bb',row).style.width=lg(n0)+'%'; $('.sb',row).style.width=lg(n1)+'%';
+    row.querySelector('.fnum').innerHTML=`<b>${nf(n1,n1<10?2:0)}</b>${Math.abs(d)>0.005?` <span class="${d>0?'up':'dn'}">${sgn(d,x=>nf(x,x<10?2:0))}</span>`:''}<small>сейчас ${nf(n0,n0<10?2:0)}</small>`;
+    if(j===0){
+      const m=CHMETA[ck], bv=m.entryField==='N'?S.base[ck].N:S.base[ck].calls, sv=m.entryField==='N'?S.scen[ck].N:S.scen[ck].calls;
+      $('#cb0',row).textContent='сейчас '+nf(bv,m.entryField==='N'?0:1);
+      const inp=$('input',row); if(inp!==act) inp.value=+sv.toFixed(m.entryField==='N'?0:1);
+    }else{
+      const c=j-1;
+      $('#cb'+j,row).textContent='сейчас '+P(S.base[ck].c[c]);
+      $$('input',row).forEach(inp=>{ if(inp===act) return; const v=S.scen[ck].c[c]*100; inp.value=inp.type==='range'?v:+v.toFixed(1); });
+    }
+  });
+  const dV=r1.value-r0.value, dI=r1.iss-r0.iss;
+  const per=S.horizon==='ytd'?'за 8,5 месяца текущей базы':'за 12 месяцев при текущем потоке';
+  $('#fhead').innerHTML=Math.abs(dV)<1
+    ?`Сценарий совпадает с текущими показателями. Измените конверсию любого этапа — эффект появится здесь.`
+    :`На ${nf(Math.abs(dI),2)} ${dI>0?'выпуска больше':'выпуска меньше'} и ${fM(Math.abs(dV))} млн ₽ ${dV>0?'больше':'меньше'} выручки за жизненный цикл клиентов ${per}.`;
+  const u0=r0.u, row=(n,a,b,f)=>`<tr><td>${n}</td><td>${f(a)}</td><td>${f(b)}</td><td class="${cls(b-a)}">${Math.abs(b-a)<1e-9?'—':sgn(b-a,f)}</td><td class="${cls(b-a)}">${a?(Math.abs(b-a)<1e-9?'':sgn((b/a-1)*100,x=>nf(x,0)+'%')):''}</td></tr>`;
+  const last=r0.n.length-1;
+  const contractsLabel={KO:'Подписано договоров',AB:'Договоров в работе',AG:'В работе',EV:'Дошло до ВКС',ST:'Лидов в работе'}[ck];
+  $('#fres').innerHTML=`<table class="t"><thead><tr><th></th><th>Сейчас</th><th>Сценарий</th><th>Разница</th><th></th></tr></thead><tbody>`+
+   row(contractsLabel,r0.contracts,r1.contracts,x=>nf(x,2))+
+   row('Выпусков облигаций',r0.iss,r1.iss,x=>nf(x,2))+
+   row('Объём размещений, млн ₽',r0.vol,r1.vol,x=>nf(x,0))+
+   row('Агентское вознаграждение, млн ₽',r0.agent/1000,r1.agent/1000,x=>nf(x,1))+
+   row('Юридическая подготовка, млн ₽',r0.legal/1000,r1.legal/1000,x=>nf(x,1))+
+   `<tr class="sub"><td colspan="5" style="padding-bottom:0;font-size:12px">Сопровождение (IR, ПВО, РИ${ck==='KO'?'':', для '+nf(S.A.nNew*100,0)+'% новых клиентов'}) за ${S.A.koSvcMonths} мес. после выпуска:</td></tr>`+
+   row('Сопровождение, млн ₽',r0.svc/1000,r1.svc/1000,x=>nf(x,1))+
+   `</tbody></table><table class="t" style="margin-top:0"><tbody>`+
+   row('Выручка за жизненный цикл, млн ₽',r0.value/1000,r1.value/1000,x=>nf(x,1)).replace('<tr>','<tr class="tot">')+
+   row('Сквозная конверсия «вход → выпуск»',r0.n[last]/r0.n[0]*100,r1.n[last]/r1.n[0]*100,x=>nf(x,2)+'%')+
+   `</tbody></table>`+
+   (ck==='KO'?`<p class="note">На одного клиента КО в среднем приходится ${fM(u0.total)} млн ₽ за ${S.A.koSvcMonths} месяцев: агентское ${fM(u0.agent)}, юридическая подготовка ${fM(u0.legal)}, сопровождение ${fM(u0.svc)}.</p>`:
+    ck==='AG'?`<p class="note">На одного клиента в среднем приходится ${fM(u0.total)} млн ₽: агентское за вычетом вознаграждения агента (сейчас в среднем ${nf(agentCommRate()*100,1)}%, взвешено по числу лидов — таблица на вкладке «Допущения») ${fM(u0.agent)}, юридическая подготовка ${fM(u0.legal)}, сопровождение ${fM(u0.svc)} (его берут ${nf(S.A.nNew*100,0)}% клиентов).</p>`:
+    ck==='EV'?`<p class="note">На одного клиента в среднем приходится ${fM(u0.total)} млн ₽: агентское ${fM(u0.agent)}, юридическая подготовка ${fM(u0.legal)}, сопровождение ${fM(u0.svc)} (его берут ${nf(S.A.nNew*100,0)}% клиентов). Издержки на привлечение в эту сумму не входят.<br><small>Справочно (обновлено 30.09): бюджет известен по ${CM.eventsCost.paidEvents} из 15 мероприятий — ${nf(CM.eventsCost.paidBudget/1000,0)} тыс. ₽ на ${CM.eventsCost.paidMeet} знакомств, то есть ≈${nf(CM.eventsCost.perMeet/1000,1)} тыс. ₽ за одно знакомство. Минимум на мероприятие — 120–150 тыс. ₽, частота — примерно раз в месяц. У «${CM.eventsCost.unattributedEvent}» есть бюджет ${nf(CM.eventsCost.unattributedBudget/1000,0)} тыс. ₽, но нет числа знакомств — отнести его некуда.</small></p>`:
+    `<p class="note">На одного клиента в среднем приходится ${fM(u0.total)} млн ₽: агентское ${fM(u0.agent)}, юридическая подготовка ${fM(u0.legal)}, сопровождение ${fM(u0.svc)} (его берут ${nf(S.A.nNew*100,0)}% клиентов).</p>`);
+  renderLevers();
+}
+function renderLevers(){
+  const ck=S.fk, mode=S.tMode, x=S.tX;
+  const L=leverEffects(ck,mode,x); const mx=Math.max(1,...L.map(l=>Math.abs(l.dV)));
+  const wordOf=mode==='best'?'до лучшего результата по этапу':mode==='pp'?`на +${nf(x,1)} п.п`:`на +${nf(x,0)}%`;
+  $('#lhead').textContent=`Каждый этап отдельно, ${wordOf}. Отсортировано по приросту выручки.`;
+  $('#levers').innerHTML=L.length?L.map((l,i)=>`<div class="lever"><div class="lb">${l.label}${l.from!=null?`<small>${P(l.from)} → ${P(l.to)}</small>`:''}</div><div><div class="bar" style="width:${Math.max(1,Math.abs(l.dV)/mx*100)}%"></div></div><div class="v"><b>${dM(l.dV)}</b><small>млн ₽, ${sgn(l.dI,v=>nf(v,2))} вып.</small></div><div class="v"><button class="btn sm go" data-lv="${i}">В сценарий</button></div></div>`).join(''):'<p class="note">Все этапы уже на максимуме.</p>';
+  S._lv=L;
+}
+function applyLever(i){
+  const l=S._lv[i], ck=S.fk; if(!l) return;
+  if(l.k>=0) writeConv(S.scen,ck,l.k,l.to);
+  else{ const f=1+(S.tMode==='rel'?S.tX:10)/100, m=CHMETA[ck]; if(m.entryField==='N') S.scen[ck].N=S.base[ck].N*f; else S.scen[ck].calls=S.base[ck].calls*f; }
+  refresh();
+}
+function initFunnel(){
+  S.fk='KO';
+  $('#chseg').innerHTML=['KO','AB','AG','EV','ST'].map(k=>`<button data-k="${k}" aria-pressed="${k===S.fk}">${CHBTN[k]}</button>`).join('');
+  $('#chseg').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; S.fk=b.dataset.k;
+    $$('#chseg button').forEach(x=>x.setAttribute('aria-pressed',x===b)); $('#chdesc').textContent=CHDESC[S.fk]; buildFunnel(); updateFunnel(); });
+  $('#chdesc').textContent=CHDESC[S.fk];
+  buildFunnel();
+  $('#hz').addEventListener('change',e=>{S.horizon=e.target.value; updateFunnel();});
+  $('#money').addEventListener('change',e=>{S.money=e.target.value; updateFunnel();});
+  $('#frows').addEventListener('input',e=>{
+    const t=e.target, ck=S.fk; let v=parseFloat(String(t.value).replace(',','.')); if(!isFinite(v)||v<0) return;
+    if(t.dataset.f==='vol'){ const m=CHMETA[ck]; if(m.entryField==='N') S.scen[ck].N=v; else S.scen[ck].calls=v; }
+    else writeConv(S.scen,ck,+t.dataset.k,Math.min(1,v/100));
+    recalc(); refreshTop(); updateFunnel();
+  });
+  $('#bestBtn').addEventListener('click',()=>{ for(let k=0;k<7;k++) writeConv(S.scen,'KO',k,Math.max(S.base.KO.c[k],F.best[k])); refresh(); });
+  $('#resetBtn').addEventListener('click',()=>{ S.scen[S.fk]=clone(S.base[S.fk]); refresh(); });
+  $('#tmode').addEventListener('change',e=>{ S.tMode=e.target.value; $('#tx').style.display=S.tMode==='best'?'none':''; $('#txl').style.display=S.tMode==='best'?'none':''; if(S.tMode==='pp')S.tX=2; if(S.tMode==='rel')S.tX=10; $('#tx').value=S.tX; renderLevers(); });
+  $('#tx').addEventListener('input',e=>{ const v=parseFloat(e.target.value); if(isFinite(v)&&v>0){ S.tX=v; renderLevers(); }});
+  $('#levers').addEventListener('click',e=>{ const b=e.target.closest('[data-lv]'); if(b) applyLever(+b.dataset.lv); });
+}
+
+/* ===================== ПРОГНОЗ ===================== */
+function niceStep(mx){ const raw=mx/5, p=Math.pow(10,Math.floor(Math.log10(raw))); const f=raw/p; return (f<=1?1:f<=2?2:f<=2.5?2.5:f<=5?5:10)*p; }
+function stackChart(series,cmp,cmpName){
+  const W=980,H=380,L=50,R=10,T=26,B=48, pw=W-L-R, ph=H-T-B;
+  const tot=new Array(24).fill(0); series.forEach(s=>s.v.forEach((x,i)=>tot[i]+=x));
+  const mx=Math.max(...tot,...(cmp||[0]),1000), st=niceStep(mx), top=Math.ceil(mx/st)*st;
+  const y=v=>T+ph-(v/top)*ph, bw=pw/24, w=bw*0.68;
+  let g='';
+  for(let v=0;v<=top+1e-6;v+=st){ g+=`<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="${cssv('--soft')}" /><text x="${L-8}" y="${y(v)+4}" text-anchor="end" font-size="11" fill="${cssv('--mute')}">${nf(v/1000,v%1000?1:0)}</text>`; }
+  g+=`<text x="${L-8}" y="12" text-anchor="end" font-size="11" fill="${cssv('--mute')}">млн ₽</text>`;
+  for(let i=0;i<24;i++){
+    let acc=0; const x=L+i*bw+(bw-w)/2; let tip=MLAB[i]+': '+fM(tot[i])+' млн ₽';
+    series.forEach(s=>{ const v=s.v[i]; if(v>0){ const h=v/top*ph; g+=`<rect x="${x}" y="${y(acc+v)}" width="${w}" height="${Math.max(0,h)}" fill="${s.color}"/>`; acc+=v; tip+='\n'+s.name+': '+fM(v);} });
+    if(cmp) tip+='\n'+cmpName+': '+fM(cmp[i]);
+    g+=`<text x="${x+w/2}" y="${H-B+15}" text-anchor="middle" font-size="10.5" fill="${cssv('--mute')}">${MN[i%12]}</text>`;
+    g+=`<rect x="${L+i*bw}" y="${T}" width="${bw}" height="${ph}" fill="transparent"><title>${esc(tip)}</title></rect>`;
+  }
+  if(cmp){ cmp.forEach((v,i)=>{ const x=L+i*bw+(bw-w)/2; g+=`<line x1="${x-2}" x2="${x+w+2}" y1="${y(v)}" y2="${y(v)}" stroke="${cssv('--ink')}" stroke-width="2.4"/>`; }); }
+  const xc=L+CUT*bw; g+=`<line x1="${xc}" x2="${xc}" y1="${T-4}" y2="${T+ph}" stroke="${cssv('--ink')}" stroke-dasharray="3 3"/><text x="${xc+5}" y="${T+4}" font-size="11" fill="${cssv('--ink')}">прогноз с сентября 2026</text>`;
+  const xs=L+S.A.effFrom*bw; if(S.A.effFrom!==CUT) g+=`<line x1="${xs}" x2="${xs}" y1="${T+16}" y2="${T+ph}" stroke="${cssv('--scen')}" stroke-dasharray="2 3"/><text x="${xs+5}" y="${T+20}" font-size="11" fill="${cssv('--scen')}">сценарий с ${MLAB[S.A.effFrom]}</text>`;
+  const xy=L+12*bw; g+=`<line x1="${xy}" x2="${xy}" y1="${H-B+20}" y2="${H-B+38}" stroke="${cssv('--mute')}"/><text x="${L+6*bw}" y="${H-8}" text-anchor="middle" font-size="12" font-weight="600" fill="${cssv('--ink')}">2026</text><text x="${L+18*bw}" y="${H-8}" text-anchor="middle" font-size="12" font-weight="600" fill="${cssv('--ink')}">2027</text>`;
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Выручка по месяцам">${g}</svg>`;
+}
+function rangeRows(){
+  const rows=[];
+  [['2026',0],['2027',1]].forEach(([y,i])=>['base','scen'].forEach(set=>{
+    const lo=yrs(agg(RNG.low[set]))[i], hi=yrs(agg(RNG.high[set]))[i], mid=yrs(agg(set==='base'?RB:RS))[i];
+    rows.push({label:`${y}, ${set==='base'?'база':'сценарий'}`,set,lo,mid,hi});
+  }));
+  return rows;
+}
+function rangeSvg(rows){
+  const W=980,rowH=40,L=140,R=44,T=12,H=T+rows.length*rowH+26;
+  const mn=Math.floor(Math.min(...rows.map(r=>r.lo))*0.92/10000)*10000, mx=Math.ceil(Math.max(...rows.map(r=>r.hi))*1.04/10000)*10000;
+  const x=v=>L+(v-mn)/(mx-mn)*(W-L-R);
+  const mute=cssv('--mute'), rule=cssv('--soft'), ink=cssv('--ink');
+  let g='';
+  for(let v=mn;v<=mx+1;v+=20000) g+=`<line x1="${x(v)}" x2="${x(v)}" y1="${T}" y2="${H-22}" stroke="${rule}"/><text x="${x(v)}" y="${H-6}" text-anchor="middle" font-size="11" fill="${mute}">${nf(v/1000,0)}</text>`;
+  rows.forEach((r,i)=>{
+    const y=T+i*rowH+rowH/2, col=r.set==='scen'?cssv('--scen'):cssv('--base');
+    g+=`<text x="${L-12}" y="${y+4}" text-anchor="end" font-size="12.5" fill="${ink}">${r.label}</text>`;
+    g+=`<line x1="${x(r.lo)}" x2="${x(r.hi)}" y1="${y}" y2="${y}" stroke="${col}" stroke-width="10" stroke-linecap="round" opacity=".55"/>`;
+    g+=`<rect x="${x(r.mid)-1.5}" y="${y-11}" width="3" height="22" fill="${ink}"/>`;
+    g+=`<text x="${x(r.lo)-10}" y="${y+4}" text-anchor="end" font-size="11.5" fill="${mute}">${fM(r.lo)}</text>`;
+    g+=`<text x="${x(r.hi)+10}" y="${y+4}" font-size="11.5" fill="${mute}">${fM(r.hi)}</text>`;
+    g+=`<text x="${x(r.mid)}" y="${y-14}" text-anchor="middle" font-size="11.5" font-weight="600" fill="${ink}">${fM(r.mid)}</text>`;
+  });
+  g+=`<text x="${L-12}" y="${H-6}" text-anchor="end" font-size="11" fill="${mute}">млн ₽</text>`;
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Диапазон выручки">${g}</svg>`;
+}
+function renderRange(){
+  const rows=rangeRows();
+  $('#fcRange').innerHTML=rangeSvg(rows);
+  $('#fcRangeTab').innerHTML=`<table class="t"><thead><tr><th></th><th>Осторожный</th><th>Расчётный</th><th>Оптимистичный</th><th>Разброс</th></tr></thead><tbody>`+
+    rows.map(r=>`<tr><td>${r.label}</td><td>${fM(r.lo)}</td><td><b>${fM(r.mid)}</b></td><td>${fM(r.hi)}</td><td>${fM(r.hi-r.lo)}</td></tr>`).join('')+`</tbody></table>`;
+  const L=S.range.low, Hh=S.range.high, pc=v=>nf(v*100,0)+'%', pp=v=>nf(Math.abs(v)*100,0)+' п.п.';
+  $('#fcRangeNote').innerHTML=`<b>Осторожный:</b> поток новых клиентов КО и АВ — ${pc(L.flow)} от расчётного; у агентов, мероприятий и сайта (маленькая выборка) — дополнительно ${pc(L.leads)} от неё; конверсия АВ в регистрацию и размещение ${pp(L.dConv)} ${L.dConv<0?'ниже':'выше'}. <b>Оптимистичный:</b> поток КО/АВ — ${pc(Hh.flow)}, у малых каналов — дополнительно ${pc(Hh.leads)}, конверсия АВ ${pp(Hh.dConv)} ${Hh.dConv<0?'ниже':'выше'}. Действующий pipeline и сопровождение в диапазоне не меняются. Границы — не прогноз вероятностей, а два «что, если» о размере потока; их можно изменить на вкладке «Допущения».`;
+}
+function initForecast(){
+  $('#effFrom').innerHTML=Array.from({length:24-CUT},(_,i)=>i+CUT).map(m=>`<option value="${m}">${MLAB[m]}</option>`).join('');
+  $('#effFrom').value=S.A.effFrom;
+  $('#effFrom').addEventListener('change',e=>{S.A.effFrom=+e.target.value; refresh();});
+  $('#fcSet').addEventListener('change',e=>{S.fcSet=e.target.value; renderForecast();});
+  $('#fcGroup').addEventListener('change',e=>{S.fcGroup=e.target.value; renderForecast();});
+}
+function renderForecast(){
+  const show=S.fcSet==='base'?RB:RS, other=S.fcSet==='base'?RS:RB;
+  const groups=S.fcGroup==='layers'?LAYERS.map(([k,n,c])=>({name:n,color:cssv(c),f:{layer:k}})):CH_ALL.map(c=>({name:c,color:cssv(CHCOL[c]),f:{ch:c}}));
+  const series=groups.map(g=>({name:g.name,color:g.color,v:agg(show,g.f)}));
+  const cmp=agg(other,{});
+  $('#fcChart').innerHTML=stackChart(series,cmp,S.fcSet==='base'?'Сценарий':'База');
+  $('#fcLegend').innerHTML=series.map(s=>`<span><i style="background:${s.color}"></i>${s.name}</span>`).join('')+`<span><i style="background:var(--ink);height:3px;vertical-align:3px"></i>${S.fcSet==='base'?'Сценарий':'База'}, итого</span>`;
+  const ty=yrs(agg(RB)), sy=yrs(agg(RS));
+  $('#fcHead').textContent=`Выручка ${fM(ty[0])} млн ₽ в 2026 и ${fM(ty[1])} млн ₽ в 2027 при текущих конверсиях`+(Math.abs(sy[1]-ty[1])+Math.abs(sy[0]-ty[0])>1?`; в сценарии — ${fM(sy[0])} и ${fM(sy[1])}.`:'.');
+  const row=(name,fl,cl='')=>{ const b=yy(RB,fl), s=yy(RS,fl); return `<tr class="${cl}"><td>${name}</td><td>${fM(b[0])}</td><td>${fM(s[0])}</td><td>${fM(b[1])}</td><td>${fM(s[1])}</td><td class="${cls(s[1]-b[1])}">${dM(s[1]-b[1])}</td><td class="${cls(s[0]+s[1]-b[0]-b[1])}">${dM(s[0]+s[1]-b[0]-b[1])}</td></tr>`; };
+  const head=`<thead><tr><th></th><th>2026 база</th><th>2026 сцен.</th><th>2027 база</th><th>2027 сцен.</th><th>Δ 2027</th><th>Δ за 2 года</th></tr></thead>`;
+  $('#fcTab').innerHTML=`<table class="t">${head}<tbody><tr class="grp"><td colspan="7">По источнику выручки</td></tr>`+LAYERS.map(([k,n])=>row(n,{layer:k})).join('')+
+    `<tr class="grp"><td colspan="7">По каналу привлечения клиента</td></tr>`+CH_ALL.map(c=>row(c==='КО'?'КО — клиентский отдел':c,{ch:c})).join('')+row('Итого',{},'tot')+`</tbody></table>`;
+  const cnt=(R,c,i)=>(R.cnt[c]||[0,0])[i];
+  const crow=c=>`<tr><td>${c}</td><td>${nf(cnt(RB,c,0),1)}</td><td>${nf(cnt(RS,c,0),1)}</td><td>${nf(cnt(RB,c,1),1)}</td><td>${nf(cnt(RS,c,1),1)}</td><td class="${cls(cnt(RS,c,1)-cnt(RB,c,1))}">${sgn(cnt(RS,c,1)-cnt(RB,c,1),x=>nf(x,1))}</td></tr>`;
+  const allc=CHS.filter(c=>c!=='Не указан').concat('Не указан');
+  const sumc=(R,i)=>allc.reduce((a,c)=>a+cnt(R,c,i),0);
+  $('#fcCnt').innerHTML=`<table class="t"><thead><tr><th>Канал</th><th>2026 база</th><th>2026 сцен.</th><th>2027 база</th><th>2027 сцен.</th><th>Δ 2027</th></tr></thead><tbody>${allc.map(crow).join('')}<tr class="tot"><td>Итого</td><td>${nf(sumc(RB,0),1)}</td><td>${nf(sumc(RS,0),1)}</td><td>${nf(sumc(RB,1),1)}</td><td>${nf(sumc(RS,1),1)}</td><td class="${cls(sumc(RS,1)-sumc(RB,1))}">${sgn(sumc(RS,1)-sumc(RB,1),x=>nf(x,1))}</td></tr></tbody></table>`;
+  renderRange();
+  const tb=agg(RB), ts=agg(RS);
+  $('#fcMonths').innerHTML=`<table class="t"><thead><tr><th>Млн ₽</th>${MLAB.map(m=>`<th>${m}</th>`).join('')}</tr></thead><tbody><tr><td>База</td>${tb.map(v=>`<td>${fM(v)}</td>`).join('')}</tr><tr><td>Сценарий</td>${ts.map(v=>`<td>${fM(v)}</td>`).join('')}</tr><tr class="tot"><td>Разница</td>${ts.map((v,i)=>`<td class="${cls(v-tb[i])}">${Math.abs(v-tb[i])<1?'—':dM(v-tb[i])}</td>`).join('')}</tr></tbody></table>`;
+}
+
+/* ===================== КЛИЕНТЫ ===================== */
+const STATUS={placed:'размещён',placed_part:'размещён частично',signed:'договор подписан',on_signing:'на подписании',stopped:'остановлен'};
+/* ===================== СРАВНЕНИЕ ИСТОЧНИКОВ ===================== */
+const CMP_SAMPLE={KO:{n:2,note:'2 выпуска у менеджеров за 8,5 мес.'},AB:{n:10,note:'10 из 28 клиентов АВ в реестре довели до выпуска'},AG:{n:3,note:'3 продажи на 64 лида за 5 кварталов'},EV:{n:2,note:'2 продажи на 300 знакомств по 15 мероприятиям'},ST:{n:0,note:'0 продаж на 7 лидов — конверсия не измерена'}};
+function CMP_COST(){ return {KO:'Покупка баз + премия за выпуск (сумм в файле нет)',AB:'Нет издержек — рекомендации собственника. Цель компании — снижать зависимость от этого источника (комментарий от 30.09)',AG:`Вознаграждение агенту уже вычтено из выручки (сейчас в среднем ${nf(agentCommRate()*100,1)}%, по каждому агенту — вкладка «Допущения»)`,EV:'Известен для 14 из 15 мероприятий: ≈7,2 тыс. ₽ за знакомство (обновлено 30.09)',ST:'Нет данных о расходах на рекламу'}; }
+function cmpRow(ck){
+  const m=CHMETA[ck], cv=S.base[ck], entry=(m.entryField==='N'?cv.N/12:cv.calls);
+  const r=funnelResult(ck,cv,12,'net'), e2e=r.n[r.n.length-1]/r.n[0];
+  const flowB=agg(RB,{layer:'flow',ch:KEY2CHNAME[ck]}), flowS=agg(RS,{layer:'flow',ch:KEY2CHNAME[ck]});
+  const f27b=flowB.slice(12).reduce((a,b)=>a+b,0), f27s=flowS.slice(12).reduce((a,b)=>a+b,0);
+  return {ck,name:KEY2CHNAME[ck],entry,unit:m.unitLabel,e2e,issYear:r.iss,valuePer:r.value/Math.max(r.iss,1e-9),f27b,f27s,sample:CMP_SAMPLE[ck]};
+}
+function renderCompare(){
+  const rows=['KO','AB','AG','EV','ST'].map(cmpRow);
+  const sampleBadge=n=>n===0?'<span class="chip" style="background:var(--neg)">0</span>':n<5?`<span class="chip" style="background:#B0812A">${n}</span>`:`<span class="chip" style="background:var(--scen)">${n}</span>`;
+  $('#cmpTab').innerHTML=`<table class="t"><thead><tr><th class="l">Источник</th><th class="l">Вход, база</th><th>Сквозная конверсия</th><th>Выпусков/год, база</th><th>Продаж в наблюдении</th><th>Выручка на клиента, млн ₽</th><th>Вклад в 2027, база</th><th>Вклад в 2027, сцен.</th><th class="l">Известные издержки</th></tr></thead><tbody>`+
+   (()=>{ const costText=CMP_COST(); return rows.map(r=>`<tr><td class="l"><span class="chip" style="background:var(${CHCOL[r.name]})">${r.name}</span></td><td class="l">${nf(r.entry,r.entry<3?2:0)} ${r.unit}</td><td>${r.e2e<0.01?nf(r.e2e*100,2):nf(r.e2e*100,1)}%</td><td>${nf(r.issYear,2)}</td><td>${sampleBadge(r.sample.n)}<br><small style="color:var(--mute)">${r.sample.note}</small></td><td>${fM(r.valuePer)}</td><td>${fM(r.f27b)}</td><td class="${cls(r.f27s-r.f27b)}">${fM(r.f27s)}</td><td class="l" style="font-size:12.5px;color:var(--mute)">${costText[r.ck]}</td></tr>`).join(''); })()+
+   `</tbody></table>`;
+  const cc=channelCosts();
+  $('#cmpCost').innerHTML=`<table class="t"><thead><tr><th class="l">Источник</th><th>Вознаграждение агенту, тыс ₽/мес (уже вычтено из выручки выше)</th><th>Известные издержки (бюджет), тыс ₽/мес</th><th>ФОТ КО, тыс ₽/мес</th><th>Итого затрат, тыс ₽/мес</th><th>Стоимость 1 лида, тыс ₽</th><th>Стоимость 1 клиента (выпуска), тыс ₽</th></tr></thead><tbody>`+
+   ['KO','AB','AG','EV','ST'].map(ck=>{ const c=cc[ck]; return `<tr><td class="l"><span class="chip" style="background:var(${CHCOL[KEY2CHNAME[ck]]})">${KEY2CHNAME[ck]}</span></td><td>${ck==='AG'?nf(c.known,0):'—'}</td><td>${ck==='EV'?nf(c.known,0):'—'}</td><td>${nf(c.fot,0)}</td><td><b>${nf(c.total,0)}</b></td><td>${nf(c.perLead,1)}</td><td>${c.iss>0.001?nf(c.perClient,0):'—'}</td></tr>`; }).join('')+
+   `</tbody></table><p class="note">ФОТ клиентского отдела (300 тыс. ₽ в месяц по умолчанию, вкладка «Допущения») поделён пропорционально входящему потоку каждого источника — «отдел подключается к клиенту из любой воронки, без него он не реализуется» (комментарий от 01.10). Эти суммы — затраты, они не вычитаются из выручки и диапазона на других вкладках.</p><p class="note"><b>Осторожно с «Агентами»:</b> их «Выручка на клиента» в таблице выше и на графике ниже уже показана за вычетом вознаграждения агенту — эта строка здесь не дополнительный расход сверху, а напоминание о размере уже учтённого вычета. Если считаете маржу вручную, не вычитайте вознаграждение агенту второй раз. У «Мероприятий» наоборот: их бюджет нигде из выручки не вычтен, это действительно отдельный расход сверху.</p>`;
+  const mxV=Math.max(...rows.map(r=>r.valuePer)), mxF=Math.max(...rows.map(r=>Math.max(r.f27b,r.f27s)),1);
+  const barRow=(r,val,mx,color)=>`<div class="cmprow"><div class="cmplb">${r.name}</div><div class="cmpbar"><div class="cmpfill" style="width:${Math.max(1,val/mx*100)}%;background:${color}"></div></div><div class="cmpval">${fM(val)}</div></div>`;
+  $('#cmpValueChart').innerHTML=rows.slice().sort((a,b)=>b.valuePer-a.valuePer).map(r=>barRow(r,r.valuePer,mxV,cssv(CHCOL[r.name]))).join('');
+  $('#cmpFlowChart').innerHTML=rows.slice().sort((a,b)=>b.f27b-a.f27b).map(r=>`<div class="cmprow"><div class="cmplb">${r.name}</div><div class="cmpbar2"><div class="bb" style="width:${Math.max(1,r.f27b/mxF*100)}%"></div><div class="sb" style="width:${Math.max(1,r.f27s/mxF*100)}%"></div></div><div class="cmpval">${fM(r.f27b)} <span class="${cls(r.f27s-r.f27b)}">→ ${fM(r.f27s)}</span></div></div>`).join('')+`<p class="note" style="margin-top:8px"><span class="lg"><i style="background:var(--base)"></i>база</span><span class="lg"><i style="background:var(--scen)"></i>сценарий</span></p>`;
+  const byValue=rows.slice().sort((a,b)=>b.valuePer-a.valuePer), byE2e=rows.slice().sort((a,b)=>b.e2e-a.e2e), byFlow=rows.slice().sort((a,b)=>b.f27b-a.f27b);
+  const solid=rows.filter(r=>r.sample.n>=5), thin=rows.filter(r=>r.sample.n<5);
+  $('#cmpReco').innerHTML=`<div class="grid-a">`+
+    `<div><h3 style="margin-top:0">Надёжные данные</h3><p class="note">${solid.length?solid.map(r=>r.name).join(', '):'нет источников с выборкой ≥5 продаж'} — по ним можно принимать решения с уверенностью.</p></div>`+
+    `<div><h3 style="margin-top:0">Тонкая выборка — сначала проверить</h3><p class="note">${thin.map(r=>r.name).join(', ')} — 0–3 продажи в наблюдении. Прежде чем вкладываться сильнее, стоит накопить больше данных или получить недостающие цифры (особенно стоимость лида).</p></div>`+
+    `</div>`+
+    `<p class="note">Самая дорогая сделка по выручке на клиента — <b>${byValue[0].name}</b> (${fM(byValue[0].valuePer)} млн ₽), самая эффективная воронка по сквозной конверсии — <b>${byE2e[0].name}</b> (${nf(byE2e[0].e2e*100,1)}%), больше всего денег в 2027 году при текущем потоке даёт <b>${byFlow[0].name}</b> (${fM(byFlow[0].f27b)} млн ₽). У КО при этом самая низкая сквозная конверсия (${nf(byE2e[byE2e.length-1].e2e*100,3)}% с учётом того, что это ${byE2e[byE2e.length-1].name==='КО'?'самый холодный источник':'источник с самой слабой воронкой'}), но и самый большой резерв роста: рычаги на вкладке «Воронка» показывают, где именно узкое место.</p>`+
+    (CM.fileNotes30_09 && CM.fileNotes30_09.excludeABgoal && [byValue[0].name,byE2e[0].name,byFlow[0].name].includes('АВ')
+      ? `<div class="callout" style="margin-top:10px"><b>Важная оговорка про АВ.</b> АВ лидирует по цифрам выше — но по комментарию пользователя цель компании обратная: «исключить лиды от АВ, т.к. он не хочет этим заниматься». Модель считает только деньги и не видит этого ограничения. Если цель — уйти от АВ, наращивать стоит следующий по каждому критерию источник, даже если он менее эффективен по чистой экономике.</div>`
+      : '');
+}
+
+/* ===================== ЗАГРУЖЕННОСТЬ ===================== */
+function calBarSvg(base,scen,metric){
+  const W=980,H=280,L=52,R=10,T=20,B=40, pw=W-L-R, ph=H-T-B;
+  const mx=Math.max(...base,...scen,metric==='cnt'?4:400);
+  const st=niceStep(mx), top=Math.ceil(mx/st)*st;
+  const y=v=>T+ph-(v/top)*ph, bw=pw/24, w=bw*0.68;
+  const mute=cssv('--mute'), soft=cssv('--soft'), ink=cssv('--ink');
+  const fmt=v=>metric==='rev'?nf(v/1000,v%1000?1:0):nf(v,metric==='cnt'?1:0);
+  let g='';
+  for(let v=0;v<=top+1e-6;v+=st) g+=`<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="${soft}"/><text x="${L-8}" y="${y(v)+4}" text-anchor="end" font-size="11" fill="${mute}">${fmt(v)}</text>`;
+  if(metric==='rev') g+=`<text x="${L-8}" y="12" text-anchor="end" font-size="11" fill="${mute}">млн ₽</text>`;
+  for(let i=0;i<24;i++){
+    const v=base[i], x=L+i*bw+(bw-w)/2, h=v/top*ph, empty=i<CUT&&v<0.01;
+    g+=`<rect x="${x}" y="${y(v)}" width="${w}" height="${Math.max(0,h)}" fill="${empty?cssv('--neg'):(i<CUT?cssv('--l-fact'):cssv('--base'))}" opacity="${i<CUT?1:0.85}"/>`;
+    if(empty) g+=`<rect x="${x-2}" y="${T}" width="${w+4}" height="${ph}" fill="none" stroke="${cssv('--neg')}" stroke-width="1.5" stroke-dasharray="3 2"/>`;
+    g+=`<text x="${x+w/2}" y="${H-B+15}" text-anchor="middle" font-size="10.5" fill="${mute}">${MN[i%12]}</text>`;
+    g+=`<rect x="${L+i*bw}" y="${T}" width="${bw}" height="${ph}" fill="transparent"><title>${MLAB[i]}: база ${fmt(v)}, сценарий ${fmt(scen[i])}${empty?' — нет размещений':''}</title></rect>`;
+  }
+  scen.forEach((v,i)=>{ const x=L+i*bw+(bw-w)/2; g+=`<line x1="${x-2}" x2="${x+w+2}" y1="${y(v)}" y2="${y(v)}" stroke="${cssv('--scen')}" stroke-width="2.6"/>`; });
+  const xc=L+CUT*bw; g+=`<line x1="${xc}" x2="${xc}" y1="${T-4}" y2="${T+ph}" stroke="${ink}" stroke-dasharray="3 3"/><text x="${xc+5}" y="${T+4}" font-size="11" fill="${ink}">прогноз с сентября 2026</text>`;
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Загруженность по месяцам">${g}</svg>`;
+}
+function calMetricVals(R,metric){
+  if(metric==='cnt') return R.cntMonth;
+  if(metric==='vol') return R.volMonth;
+  return agg(R,{});
+}
+function calKpi(){
+  const metricLbl={cnt:['Выпусков','0,0'],vol:['Объём размещений, млн ₽','0'],rev:['Выручка, млн ₽','0']};
+  const sumY=(a,y)=>a.slice(y*12,y*12+12).reduce((x,v)=>x+v,0);
+  const rows=[['cnt',R=>R.cntMonth,2],['vol',R=>R.volMonth,0],['rev',R=>agg(R,{}),1]];
+  let h=`<table class="t"><thead><tr><th class="l"></th><th>2026 база</th><th>2026 сцен.</th><th>2027 база</th><th>2027 сцен.</th></tr></thead><tbody>`;
+  rows.forEach(([key,get,dg])=>{
+    const b=get(RB), s=get(RS); const div=key==='rev'?1000:1;
+    const row=(y)=>{ const bv=sumY(b,y)/div, sv=sumY(s,y)/div; return `<td>${nf(bv,dg)}</td><td class="${cls(sv-bv)}">${nf(sv,dg)}</td>`; };
+    h+=`<tr><td class="l">${key==='cnt'?'Выпусков':key==='vol'?'Объём размещений, млн ₽':'Выручка, млн ₽'}</td>${row(0)}${row(1)}</tr>`;
+  });
+  h+='</tbody></table>';
+  return h;
+}
+function calQuarters(){
+  const get=S.calMetric==='cnt'?R=>R.cntMonth:S.calMetric==='vol'?R=>R.volMonth:R=>agg(R,{});
+  const b=get(RB), s=get(RS), div=S.calMetric==='rev'?1000:1, dg=S.calMetric==='cnt'?2:0;
+  let h=`<table class="t"><thead><tr><th class="l">Квартал</th>${Array.from({length:8},(_,q)=>`<th>${(q%4)+1} кв. ${2026+(q>3?1:0)}</th>`).join('')}</tr></thead><tbody>`;
+  const qsum=(a,q)=>a.slice(q*3,q*3+3).reduce((x,v)=>x+v,0)/div;
+  h+=`<tr><td class="l">База</td>${Array.from({length:8},(_,q)=>`<td>${nf(qsum(b,q),dg)}</td>`).join('')}</tr>`;
+  h+=`<tr><td class="l">Сценарий</td>${Array.from({length:8},(_,q)=>`<td class="${cls(qsum(s,q)-qsum(b,q))}">${nf(qsum(s,q),dg)}</td>`).join('')}</tr>`;
+  h+='</tbody></table>';
+  return h;
+}
+function renderCalendar(){
+  const metric=S.calMetric;
+  const base=calMetricVals(RB,metric), scen=calMetricVals(RS,metric);
+  $('#calKpi').innerHTML = calKpi();
+  $('#calChart').innerHTML = calBarSvg(base,scen,metric);
+  $('#calChart').insertAdjacentHTML('beforeend','');
+  const legend=`<p class="note" style="margin-top:6px"><span class="lg"><i style="background:var(--base)"></i>база, столбцы</span><span class="lg"><i style="background:var(--scen);height:3px;vertical-align:3px"></i>сценарий, линия</span><span class="lg"><i style="background:var(--neg)"></i>месяц без размещений (факт)</span></p>`;
+  $('#calLegend').innerHTML = legend;
+  $('#calQuarters').innerHTML = calQuarters();
+  const cv = metric==='cnt'?base:base; // сетка всегда по числу выпусков, понятнее всего
+  const vals = base;
+  const mx = Math.max(...vals,1);
+  let grid = '<div class="calgrid">';
+  [0,1].forEach(y=>{
+    grid += `<div class="calyear">${2026+y}</div>`;
+    for(let mi=0;mi<12;mi++){
+      const m=y*12+mi, v=vals[m], fact=m<CUT, empty=fact&&v<0.01;
+      const t=Math.min(1,v/mx), bg=empty?'var(--neg)':fact?`rgba(43,62,82,${0.15+t*0.65})`:`rgba(10,122,98,${0.12+t*0.6})`;
+      grid += `<div class="calcell ${fact?'fact':'fc'} ${empty?'gap':''}" style="background:${bg}" title="${MLAB[m]}">
+        <div class="calm">${MN[mi]}</div>
+        <div class="caln">${metric==='rev'?nf(v/1000,1):metric==='cnt'?nf(v,v<10?1:0):nf(v,0)}</div>
+      </div>`;
+    }
+  });
+  grid += '</div>';
+  $('#calGrid').innerHTML = grid;
+  const gaps=[]; for(let m=0;m<CUT;m++) if(RB.cntMonth[m]<0.01) gaps.push(MLAB[m]);
+  $('#calGaps').innerHTML = gaps.length
+    ? `<p class="note"><b>Месяцы без единого размещения в 2026 году (факт):</b> ${gaps.join(', ')}. Это и есть те самые «разрывы» и отсутствие «окна возможностей на рынке», из-за которых нельзя планировать выручку равномерно по месяцам.</p>`
+    : `<p class="note">В отслеживаемом периоде пустых месяцев не найдено.</p>`;
+  renderRatingBlock();
+}
+function renderRatingBlock(){
+  const RT=CM.ratings.empirical.byTier, A=S.A;
+  const tier=(key,label,mult)=>{ const t=RT[key]; const pct=t.total?Math.round(t.placed/t.total*100):0;
+    return `<div class="cmprow"><div class="cmplb">${label}</div><div class="cmpbar2" style="flex-direction:row"><div class="bb" style="width:${pct}%;height:16px"></div></div><div class="cmpval">${pct}% (${t.placed}/${t.total})<br><small style="color:var(--mute)">сейчас× <input type="number" step="0.05" min="0" max="2" data-rating="${key}" value="${mult.toFixed(2)}" style="width:56px"></small></div></div>`; };
+  $('#calRating').innerHTML = `<p class="note">${CM.ratings.note}</p>`+
+    tier('low','Низкий (CCC…B)',A.ratingLow)+tier('mid','Средний (B+…BB+)',A.ratingMid)+tier('high','Высокий (BBB- и выше)',A.ratingHigh)+
+    `<p class="note" style="margin-top:8px">Столбцы — доля фактически размещённых клиентов реестра в каждой рейтинговой группе (это факт, не прогноз). Поля справа — множитель, на который модель домножает вероятность размещения в pipeline для клиента этой группы (раздел «Допущения»); он применяется только к клиентам, у которых рейтинг известен в реестре. Поменяйте множитель — вероятности и прогноз пересчитаются.</p>`;
+}
+function initCalendar(){
+  S.calMetric='cnt';
+  $('#calMetric').addEventListener('change',e=>{S.calMetric=e.target.value; renderCalendar();});
+  $('#tab-calendar').addEventListener('input',e=>{
+    if(e.target.dataset.rating){ const v=parseFloat(e.target.value); if(isFinite(v)){ S.A['rating'+e.target.dataset.rating[0].toUpperCase()+e.target.dataset.rating.slice(1)]=v; recalc(); refreshTop(); renderCalendar(); } }
+  });
+}
+
+function renderClients(){
+  const names=new Set(DATA.clients.map(c=>c.name)); Object.keys(RB.cli).forEach(n=>names.add(n));
+  const reg={}; DATA.clients.forEach(c=>reg[c.name]=c);
+  const chOpts=sel=>CHS.filter(c=>c!=='Не указан').map(c=>`<option ${c===sel?'selected':''}>${c}</option>`).join('');
+  const rows=[...names].map(n=>{ const b=RB.cli[n]||[0,0], s=RS.cli[n]||[0,0]; return {n,reg:reg[n],b,s}; }).sort((a,b)=>(b.b[0]+b.b[1])-(a.b[0]+a.b[1]));
+  const cc={}; rows.forEach(r=>{ const c=chOf(r.n); (cc[c]||(cc[c]={n:0,act:0}));cc[c].n++; if(r.b[0]+r.b[1]>0) cc[c].act++; });
+  $('#chSum').innerHTML=`<table class="t"><thead><tr><th class="l">Канал</th><th>Клиентов в реестре</th><th>С выручкой в 2026–2027</th><th>Выручка 2026</th><th>Выручка 2027 база</th><th>Выручка 2027 сцен.</th></tr></thead><tbody>`+
+   CHS.map(c=>{ const b=yy(RB,{ch:c}), s=yy(RS,{ch:c}), o=cc[c]||{n:0,act:0}; return `<tr><td class="l"><span class="chip" style="background:var(${CHCOL[c]})">${c}</span></td><td>${o.n}</td><td>${o.act}</td><td>${fM(b[0])}</td><td>${fM(b[1])}</td><td class="${cls(s[1]-b[1])}">${fM(s[1])}</td></tr>`; }).join('')+`</tbody></table><p class="note">В выручку канала 2027 года входят и новые клиенты из воронки, которых пока нет в реестре. Каналы «Мероприятие» и «Сайт» в реестре клиентов пока не встречаются — их выручка в 2027 году целиком из воронки новых клиентов.</p>`;
+  $('#cliTab').innerHTML=`<table class="t"><thead><tr><th>Клиент</th><th class="l">Регион</th><th class="l">Канал привлечения</th><th class="l">Статус</th><th>2026 база</th><th>2027 база</th><th>2027 сцен.</th></tr></thead><tbody>`+
+   rows.map(r=>`<tr><td>${esc(r.n)}</td><td class="l">${esc(r.reg?r.reg.region||'':'')}</td><td class="l"><select data-cli="${esc(r.n)}" aria-label="Канал: ${esc(r.n)}">${chOpts(chOf(r.n))}</select></td><td class="l">${r.reg?STATUS[r.reg.stage]||esc(r.reg.status||''):'только сопровождение'}</td><td>${fM(r.b[0])}</td><td>${fM(r.b[1])}</td><td class="${cls(r.s[1]-r.b[1])}">${fM(r.s[1])}</td></tr>`).join('')+`</tbody></table>`;
+  const its=ITEMS.filter(it=>it.planIdx!=null&&it.planIdx>=CUT).sort((a,b)=>a.planIdx-b.planIdx);
+  $('#pipeTab').innerHTML=`<table class="t"><thead><tr><th>Выпуск</th><th class="l">Канал</th><th>Объём, млн ₽</th><th>Срок по плану</th><th class="l">Этап сделки</th><th>Вероятность база</th><th>Вероятность сцен.</th><th>Ожидаемая выручка, млн ₽ база</th><th>сцен.</th></tr></thead><tbody>`+
+   its.map(it=>{ const rv=itemRev(it), full=rv.tot.slice(CUT).reduce((a,b)=>a+b,0), mm=Math.min(23,it.planIdx+S.A.shift); const pb=itemP(it,'base',mm), ps=itemP(it,'scen',mm), real=(S.stage[it.name]==='s7'?1:S.A.pipeRealize);
+     return `<tr><td>${esc(it.name)}</td><td class="l"><span class="chip" style="background:var(${CHCOL[chOf(it.issuer)]})">${chOf(it.issuer)}</span></td><td>${nf(it.vol,0)}</td><td>${MLAB[Math.min(23,it.planIdx)]}</td><td class="l"><select data-stage="${esc(it.name)}" aria-label="Этап: ${esc(it.name)}">${Object.entries(STAGE_OPTS).map(([k,t])=>`<option value="${k}" ${S.stage[it.name]===k?'selected':''}>${t}</option>`).join('')}</select></td><td>${P(pb)}</td><td class="${cls(ps-pb)}">${P(ps)}</td><td>${fM(full*pb*real)}</td><td class="${cls(ps-pb)}">${fM(full*ps*real)}</td></tr>`; }).join('')+`</tbody></table>`;
+}
+function initClients(){
+  $('#tab-clients').addEventListener('change',e=>{
+    const t=e.target;
+    if(t.dataset.cli){ S.clientCh[t.dataset.cli]=t.value; refresh(); }
+    if(t.dataset.stage){ S.stage[t.dataset.stage]=t.value; refresh(); }
+  });
+}
+
+/* ===================== ДОПУЩЕНИЯ ===================== */
+const AF=[
+ ['Сроки и лаги',[
+  ['A.shift','Сдвиг сроков выпусков из pipeline, мес','n','Положительное число переносит все ожидаемые размещения позже.'],
+  ['A.pipeRealize','Доля объёма, которая реально размещается (кроме сделок «уже в размещении»), %','pct','По умолчанию 100% — без дисконта. В файле два известных случая частичного размещения (МеталлТрейд: заявлено 250 млн, размещено 50; КапДорСтрой: заявлено 250, размещено 75) — это может быть системным риском, а может быть совпадением на двух примерах. Понизьте, если считаете риск системным.'],
+  ['A.flowFrom','Новые клиенты воронки учитываются с','month','До этого месяца выручку дают только действующие клиенты и pipeline.'],
+  ['A.lagKO','КО: от звонка до выпуска, мес','n','Звонок месяца s превращается в выпуск в месяце s + лаг.'],
+  ['A.lagCon','Остальные каналы: от лида/договора до выпуска, мес','n',''],
+  ['A.bridge','Доля лидов, уже находящихся в воронке, но ещё не попавших в pipeline, %','pct','Определяет, сколько выпусков в первые месяцы 2027 года дадут лиды, привлечённые до сентября 2026.']]],
+ ['Клиентский отдел (КО): экономика одного выпуска, тыс. ₽',[
+  ['A.koVol','Объём выпуска, млн ₽','n','Среднее по шести клиентам из листа «Этапы воронки».'],
+  ['A.koAgent','Агентское вознаграждение','n','Средний размер 2,75% от объёма.'],
+  ['A.koNet','Доля агентского за вычетом расходов, %','pct','Используется в прогнозе и при выборе «за вычетом расходов».'],
+  ['A.koLegal','Юридическая подготовка','n',''],
+  ['A.koIr','IR, в месяц','n',''],
+  ['A.koPvo','ПВО, в месяц','n',''],
+  ['A.koMm','ММ, в месяц','n',''],
+  ['A.koSvcMonths','Срок сопровождения, мес','n','«Средний срок выпуска 36 мес» указан в файле напрямую (обновление от 30.09).'],
+  ['A.leadPct','Вознаграждение за лид, % выручки','pct','Справочно, в прогноз не входит.']]],
+ ['АВ, Агенты, Мероприятия, Сайт: экономика одного выпуска, тыс. ₽',[
+  ['A.nVol','Средний объём выпуска, млн ₽','n','Среднее по выпускам 2026 года (данные АВ).'],
+  ['A.nAgent','Агентское вознаграждение','n','Среднее по выпускам 2026 года с ненулевым агентским.'],
+  ['A.nLegal','Юридическая подготовка','n',''],
+  ['A.nSvc','Сопровождение, в месяц','n','Среднее по клиентам, у которых оно есть.'],
+  ['A.nNew','Доля новых клиентов, берущих сопровождение, %','pct','']]],
+ ['Общая «хвостовая» вероятность для сделок вне КО',[
+  ['A.tailSign','Вероятность подписания уже направленного договора, %','pct','= конверсия КО «большая анкета → договор». С 30.09: тот же отдел «дожимает» любого лида, независимо от источника, поэтому используются реальные конверсии КО, а не отдельная оценка.'],
+  ['A.tailReg','Регистрация выпуска (решение биржи), %','pct','= конверсия КО «договор → регистрация».'],
+  ['A.tailPlace','Регистрация → выпуск, %','pct','= конверсия КО «регистрация → выпуск».']]],
+ ['Действующие клиенты и прочие услуги',[
+  ['A.idx','Индексация сопровождения в 2027, %','pct',''],
+  ['A.renew','Продление истёкших договоров сопровождения, %','pct','0% — истёкшие договоры в 2027 не дают выручки.'],
+  ['A.otherFile','Прочие услуги 2026: коэффициент к плану','n','Консалтинг, рейтинги, оферты и т. п. 1 — как в файле.'],
+  ['A.otherPct','Прочие услуги 2027, % от выручки по выпускам','pct','']]],
+ ['ФОТ клиентского отдела и рейтинг клиента',[
+  ['A.koFot','ФОТ клиентского отдела, тыс ₽ в месяц','n','«Отдел подключается к клиенту из любой воронки, без него он не реализуется» — делится между источниками пропорционально входящему потоку (вкладка «Сравнение источников», «Затраты»).'],
+  ['A.ratingLow','Рейтинг CCC…B: множитель вероятности размещения','n','Эмпирически размещено 4 из 6 клиентов этой группы (67%). Применяется в pipeline только к клиентам с известным рейтингом.'],
+  ['A.ratingMid','Рейтинг B+…BB+: множитель вероятности размещения','n','Эмпирически размещено 17 из 21 (81%) — принято за базовый уровень (×1).'],
+  ['A.ratingHigh','Рейтинг BBB- и выше: множитель вероятности размещения','n','Эмпирически размещено 2 из 2 (100%) — выборка очень маленькая, множитель осторожный, не ×1,5.']]]
+];
+function ctl(path,type,k){
+  const v=getP(path);
+  if(type==='month') return `<select data-path="${path}" data-t="month">${Array.from({length:12},(_,i)=>i+12).map(m=>`<option value="${m}" ${m===v?'selected':''}>${MLAB[m]}</option>`).join('')}</select>`;
+  if(type==='pct') return `<input type="number" step="0.1" data-path="${path}" data-k="0.01" value="${+(v*100).toFixed(2)}">`;
+  return `<input type="number" step="any" data-path="${path}" value="${+(+v).toFixed(3)}">`;
+}
+const AGENT_SRC_LABEL={known:'указана в файле',maybe:'возможно тот же агент под другим именем — не точно',estimate:'не указана, взято среднее',matched:'сопоставлена по имени (Вехов / Чубко)'};
+function buildAgentTable(){
+  const names=Object.keys(CM.agentStats).sort((a,b)=>CM.agentStats[b][0]-CM.agentStats[a][0]);
+  let h=`<table class="t"><thead><tr><th class="l">Агент</th><th>Лидов</th><th>Продаж</th><th>Ставка, % от агентского</th><th class="l">Источник</th></tr></thead><tbody>`;
+  names.forEach(n=>{ const st=CM.agentStats[n]; h+=`<tr><td class="l">${esc(n)}</td><td>${st[0]}</td><td>${st[4]}</td><td><input type="number" step="0.1" data-agent="${esc(n)}" value="${+(S.agentRates[n]*100).toFixed(1)}" style="width:80px"></td><td class="l" style="font-size:12px;color:var(--mute)">${AGENT_SRC_LABEL[CM.agentRateSrc[n]]}</td></tr>`; });
+  h+=`</tbody><tfoot><tr class="tot"><td class="l">Средняя, взвешено по лидам</td><td>${names.reduce((a,n)=>a+CM.agentStats[n][0],0)}</td><td>${names.reduce((a,n)=>a+CM.agentStats[n][4],0)}</td><td colspan="2" id="agentAvgCell"><b>${nf(agentCommRate()*100,2)}%</b></td></tr></tfoot></table>`;
+  return h;
+}
+function buildAssume(){
+  let h=`<div class="grid-a">`+AF.map(([g,items])=>`<div><h3>${g}</h3>`+items.map(([p,l,t,d])=>`<div class="arow"><label>${l}${d?`<small>${d}</small>`:''}</label>${ctl(p,t)}</div>`).join('')+`</div>`).join('')+`</div>`;
+  h+=`<h3>Ставки вознаграждения по агентам</h3><p class="note">Ставка в листе «% вознаграждения агентов» указана напрямую у пяти из 12 агентов с лидами в 2025\u20132026: Турлов, Орби, Владимир Нелюбов, а также Вехов и Чубко \u2014 в реестре лидов они записаны как «Георгий Вехов» и «Чупко Михаил», это те же люди. Семи остальным агентам ставка не указана \u2014 им присвоено среднее по пяти известным (20,5%). Поправьте любую ставку \u2014 средняя внизу таблицы (используется в расчёте) пересчитается сразу.</p><div class="scroll">`+buildAgentTable()+`</div>`;
+  h+=`<h3>Диапазон выручки 2027 года</h3><p class="note">Показывает, насколько прогноз зависит от размера потока новых клиентов. Границы — два «что, если», а не вероятности. Применяются только в расчёте диапазона на вкладке «Прогноз».</p><div style="max-width:720px">`+
+   `<div class="arow" style="grid-template-columns:1fr 92px 92px"><span></span><b style="font-size:12px">Осторожный</b><b style="font-size:12px">Оптимистичный</b></div>`+
+   [['flow','Поток КО и АВ, % от расчётного','pct'],['leads','Доп. множитель потока Агентов, Мероприятий, Сайта, % от расчётного','pct'],['dConv','Конверсии АВ в регистрацию и размещение, п.п. к расчётным','pct']].map(([k,l])=>`<div class="arow" style="grid-template-columns:1fr 92px 92px"><label>${l}</label>${ctl('range.low.'+k,'pct')}${ctl('range.high.'+k,'pct')}</div>`).join('')+`</div>`;
+  h+=`<h3>Текущие показатели воронок (база)</h3><p class="note">Значения, от которых считается сценарий. Если сценарий по этапу не менялся, он обновится вместе с базой.</p><div class="grid-a">`;
+  ['KO','AB','AG','EV','ST'].forEach(ck=>{
+    const m=CHMETA[ck], lbl=CHBTN[ck];
+    h+=`<div><div class="arow"><label><b>${lbl}</b> — ${m.unitLabel.toLowerCase()}</label><input type="number" step="any" data-path="base.${ck}.${m.entryField==='N'?'N':'calls'}" value="${+S.base[ck][m.entryField==='N'?'N':'calls'].toFixed(m.entryField==='N'?0:2)}"></div>`+
+      m.labels.slice(0,-1).map((name,i)=>`<div class="arow"><label>${name} → ${m.labels[i+1]}</label><input type="number" step="0.1" data-conv="${ck}:${i}" value="${+(S.base[ck].c[i]*100).toFixed(2)}"></div>`).join('')+
+      `</div>`;
+  });
+  h+=`</div>`;
+  $('#assumeBody').innerHTML=h;
+}
+function setBaseConv(ck,k,v){
+  const old=S.base[ck].c[k]; if(Math.abs(S.scen[ck].c[k]-old)<1e-12) S.scen[ck].c[k]=v; S.base[ck].c[k]=v;
+}
+function initAssume(){
+  buildAssume();
+  $('#assumeBody').addEventListener('input',e=>{
+    const t=e.target;
+    if(t.dataset.agent){ const cv=parseFloat(String(t.value).replace(',','.')); if(isFinite(cv)){ S.agentRates[t.dataset.agent]=Math.min(1,Math.max(0,cv/100)); recalc(); refreshTop(); const c=$('#agentAvgCell'); if(c) c.innerHTML=`<b>${nf(agentCommRate()*100,2)}%</b>`; } return; }
+    if(t.dataset.conv){ const [ck,ki]=t.dataset.conv.split(':'); const cv=parseFloat(String(t.value).replace(',','.')); if(isFinite(cv)){ setBaseConv(ck,+ki,Math.min(1,Math.max(0,cv/100))); recalc(); refreshTop(); } return; }
+    if(!t.dataset.path) return; const k=parseFloat(t.dataset.k)||1;
+    let v=parseFloat(String(t.value).replace(',','.')); if(!isFinite(v)) return; v=v*k;
+    if(t.dataset.path.startsWith('base.')){ const old=getP(t.dataset.path), sp=t.dataset.path.replace('base.','scen.'); if(Math.abs(getP(sp)-old)<1e-12) setP(sp,v); }
+    setP(t.dataset.path,v); recalc(); refreshTop();
+  });
+  $('#assumeBody').addEventListener('change',e=>{ const t=e.target; if(t.dataset.t==='month'){ setP(t.dataset.path,+t.value); recalc(); refreshTop(); } });
+  $('#resetAll').addEventListener('click',()=>{ if(!confirm('Вернуть все допущения, сценарий, каналы и этапы сделок к исходным значениям?')) return;
+    S.A=clone(A0); S.base=clone(BASE0); S.scen=clone(BASE0); S.range=clone(RANGE0); S.agentRates=clone(CM.agentRateDefault); DATA.clients.forEach(c=>S.clientCh[c.name]=c.ch); ITEMS.forEach(it=>S.stage[it.name]=it.stage);
+    $('#effFrom').value=S.A.effFrom; buildAssume(); refresh(); });
+}
+
+/* ===================== СТАРТ ===================== */
+recalc(); initTabs(); initFunnel(); initForecast(); initCalendar(); initClients(); initAssume(); refreshTop(); go('funnel');
+
+</script>
+</body>
+</html>
