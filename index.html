@@ -317,7 +317,7 @@ const A0 = {
 };
 const BASE0 = {
   KO:{calls:MG[0]/YTD_MONTHS, c:[...KO_C]},
-  AB:{calls:20/PM, c:[21/28, KO_C[5], KO_C[6]]}, // 20 лидов АВ за 15 мес.; 21 из 28 клиентов АВ реестра дошли до выпуска; регистрация/выпуск = конверсии КО (см. A.tailReg)
+  AB:{calls:20/PM, c:[DATA.clients.filter(c=>c.ch==='АВ'&&(c.stage==='placed'||c.stage==='placed_part')).length/DATA.clients.filter(c=>c.ch==='АВ').length, KO_C[5], KO_C[6]]}, // 20 лидов АВ за 15 мес.; «договор подписан» = доля размещённых среди клиентов АВ в реестре (сейчас 25 из 28, считается из реестра; решение от 09.10); регистрация/выпуск = конверсии КО (см. A.tailReg)
   AG:{calls:AGF.leads/PM, c:[AGF.vks/AGF.leads, AGF.inwork/AGF.vks, AGF.sales/AGF.inwork]}, // 64 лида, 28 ВКС, 21 в работе, 3 продажи — по кварталам листа «Агенты»
   EV:{calls:EVF.meet/PM, c:[EVF.talk/EVF.meet, EVF.vks/EVF.talk, EVF.sales/EVF.vks]},
   ST:{calls:ST_LEADS/PM, c:[0.05]}
